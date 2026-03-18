@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Python Compiler</title>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -54,6 +55,7 @@
             font-size: 0.85rem;
         }
         .run-btn:hover { background: #4a8bc2; }
+        .run-btn:disabled { background: #666; cursor: not-allowed; }
         #editor {
             flex: 1;
             background: #1e1e1e;
@@ -85,10 +87,8 @@
             white-space: pre-wrap;
         }
         .error { color: #f44747 !important; }
-        .loading {
-            opacity: 0.5;
-            pointer-events: none;
-        }
+        .loading { opacity: 0.5; }
+        .status-msg { color: #ffd43b; font-size: 0.85rem; }
     </style>
 </head>
 <body>
@@ -101,7 +101,8 @@
         <div class="editor-panel">
             <div class="panel-header">
                 <span>main.py</span>
-                <button class="run-btn" onclick="runCode()">▶ Run</button>
+                <span id="status" class="status-msg">Loading Python...</span>
+                <button class="run-btn" id="runBtn" onclick="runCode()" disabled>▶ Run</button>
             </div>
             <textarea id="editor" placeholder="# Write your Python code here..."># Python Compiler
 print("Hello, World!")
@@ -119,10 +120,22 @@ print("Python is awesome!")</textarea>
     </div>
 
     <script>
-        // Use Piston API (free, public) - or replace with your own backend
-        const API_URL = 'https://emkc.org/api/v2/piston/execute';
+        let pyodide = null;
         const editor = document.getElementById('editor');
         const outputEl = document.getElementById('output');
+        const runBtn = document.getElementById('runBtn');
+        const statusEl = document.getElementById('status');
+
+        async function main() {
+            try {
+                pyodide = await loadPyodide();
+                statusEl.textContent = 'Ready!';
+                runBtn.disabled = false;
+            } catch (err) {
+                statusEl.textContent = 'Failed to load Python';
+                console.error(err);
+            }
+        }
 
         async function runCode() {
             const code = editor.value;
@@ -132,35 +145,35 @@ print("Python is awesome!")</textarea>
             outputEl.value = 'Running...';
 
             try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        language: 'python',
-                        version: '3.10.0',
-                        files: [{ content: code }]
-                    })
-                });
-
-                const result = await response.json();
+                // Capture stdout
+                pyodide.runPython(`
+import sys
+from io import StringIO
+sys.stdout = StringIO()
+sys.stderr = StringIO()
+                `);
                 
-                if (result.run) {
-                    const output = result.run.output || '';
-                    const stderr = result.run.stderr || '';
-                    if (stderr) {
-                        outputEl.classList.add('error');
-                        outputEl.value = stderr;
-                    } else {
-                        outputEl.classList.remove('error');
-                        outputEl.value = output || '(No output)';
-                    }
-                } else {
+                await pyodide.runPythonAsync(code);
+                
+                const stdout = pyodide.runPython("sys.stdout.getvalue()");
+                const stderr = pyodide.runPython("sys.stderr.getvalue()");
+                
+                // Reset stdout/stderr
+                pyodide.runPython(`
+sys.stdout = sys.__stdout__
+sys.stderr = sys.__stderr__
+                `);
+                
+                if (stderr) {
                     outputEl.classList.add('error');
-                    outputEl.value = result.message || 'Unknown error';
+                    outputEl.value = stderr;
+                } else {
+                    outputEl.classList.remove('error');
+                    outputEl.value = stdout || '(No output)';
                 }
             } catch (err) {
-                output.classList.add('error');
-                output.value = 'Connection error: Make sure backend is running\n' + err.message;
+                outputEl.classList.add('error');
+                outputEl.value = err.message;
             }
 
             outputEl.classList.remove('loading');
@@ -178,6 +191,8 @@ print("Python is awesome!")</textarea>
                 runCode();
             }
         });
+
+        main();
     </script>
 </body>
 </html>
