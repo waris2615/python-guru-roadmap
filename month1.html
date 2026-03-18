@@ -927,24 +927,27 @@ print(f"{a} / {b} = {a / b}")</textarea>
             try {
                 const py = await initPyodide();
                 
-                // Replace input() with js.prompt()
-                const setupCode = `
+                // Set up input handler FIRST
+                py.runPython(`
 import sys
 from io import StringIO
-from js import prompt
+from js import window, PyodideInterface
 
 class BrowserInput:
+    def __init__(self):
+        self.prompt = window.prompt
+        
     def readline(self, prompt_text=""):
-        result = prompt(prompt_text)
-        return (result if result else "") + "\n"
+        result = self.prompt(prompt_text)
+        return (result if result is not None else "") + "\\n"
 
 sys.stdin = BrowserInput()
 sys.stdout = StringIO()
 sys.stderr = StringIO()
-`;
-                const wrappedCode = setupCode + code;
+                `);
                 
-                await py.runPythonAsync(wrappedCode);
+                // Run user code (sync, not async)
+                py.runPython(code);
                 
                 const stdout = py.runPython("sys.stdout.getvalue()");
                 const stderr = py.runPython("sys.stderr.getvalue()");
