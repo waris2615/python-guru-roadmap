@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodexLabs - Pushing the Boundaries of Technology</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 60px;
+            background: #fff;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a365d;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #1a365d, #2c5282);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #4a5568;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: #1a365d; }
+        .nav-cta {
+            background: #1a365d;
+            color: #fff !important;
+            padding: 10px 25px;
+            border-radius: 25px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #3182ce 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 20px;
+        }
+        .hero-content { max-width: 900px; }
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 25px;
+            letter-spacing: -1px;
+        }
+        .hero p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+        .hero-btns {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+        .btn {
+            padding: 15px 40px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+        }
+        .btn-primary {
+            background: #fff;
+            color: #1a365d;
+            border: none;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .btn-outline {
+            background: transparent;
+            color: #fff;
+            border: 2px solid rgba(255,255,255,0.5);
+        }
+        .btn-outline:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: #fff;
+        }
+        
+        /* Stats */
+        .stats {
+            display: flex;
+            background: #f7fafc;
+            padding: 40px 60px;
+            gap: 60px;
+            justify-content: center;
+        }
+        .stat { text-align: center; }
+        .stat-num {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #1a365d;
+        }
+        .stat-label { color: #718096; font-size: 0.9rem; }
+        
+        /* Stories Section */
+        .stories {
+            padding: 100px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #1a365d;
+            font-weight: 300;
+            margin-bottom: 15px;
+        }
+        .section-header p {
+            color: #718096;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .story-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        .story-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        .story-card:hover { transform: translateY(-5px); }
+        .story-img {
+            height: 220px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        .story-content { padding: 30px; }
+        .story-tag {
+            background: #ebf8ff;
+            color: #3182ce;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .story-content h3 {
+            font-size: 1.3rem;
+            color: #1a365d;
+            margin-bottom: 10px;
+        }
+        .story-content p {
+            color: #718096;
+            font-size: 0.95rem;
+        }
+        
+        /* About Section */
+        .about {
+            background: #f7fafc;
+            padding: 100px 60px;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .about-text h2 {
+            font-size: 2.2rem;
+            color: #1a365d;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        .about-text p {
+            color: #4a5568;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        .about-stat {
+            background: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .about-stat-num {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3182ce;
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, #1a365d, #2c5282);
+            padding: 100px 60px;
+            text-align: center;
+            color: #fff;
+        }
+        .cta h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        .cta p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a202c;
+            color: #a0aec0;
+            padding: 60px 60px 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 40px;
+        }
+        .footer-brand h3 {
+            color: #fff;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .footer-col h4 {
+            color: #fff;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 10px; }
+        .footer-col a {
+            color: #a0aec0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #2d3748;
+            font-size: 0.85rem;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { padding: 15px 20px; }
+            .nav-links { display: none; }
+            .stats { flex-wrap: wrap; gap: 30px; }
+            .stories, .about, .cta { padding: 60px 20px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <div class="logo-icon">C</div>
+            CodexLabs
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Science</a></li>
+            <li><a href="#">Responsibility</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Clinical Trials</a></li>
+            <li><a href="#" class="nav-cta">Explore</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Pushing the Boundaries of Innovation</h1>
+            <p>We're driven by the pursuit of technological breakthroughs, seeking innovative solutions for developers and businesses. From AI to cloud infrastructure, we turn cutting-edge science into transformative tools.</p>
+            <div class="hero-btns">
+                <a href="index.html" class="btn btn-primary">Our Platform</a>
+                <a href="#" class="btn btn-outline">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat">
+            <div class="stat-num">500K+</div>
+            <div class="stat-label">Active Developers</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">50+</div>
+            <div class="stat-label">Open Source Projects</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">10M+</div>
+            <div class="stat-label">API Requests/Day</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">99.9%</div>
+            <div class="stat-label">Uptime</div>
+        </div>
+    </section>
+
+    <section class="stories">
+        <div class="section-header">
+            <h2>Latest Stories</h2>
+            <p>Discover how we're transforming the technology landscape through innovation and dedication.</p>
+        </div>
+        <div class="story-grid">
+            <a href="#" class="story-card">
+                <div class="story-img">🤖</div>
+                <div class="story-content">
+                    <span class="story-tag">Artificial Intelligence</span>
+                    <h3>How AI is Revolutionizing Code Generation</h3>
+                    <p>Our latest breakthrough in machine learning is helping developers write better code faster.</p>
+                </div>
+            </a>
+            <a href="#" class="story-card">
+                <div class="story-img">☁️</div>
+                <div class="story-content">
+                    <span class="story-tag">Cloud Infrastructure</span>
+                    <h3>The Future of Serverless Computing</h3>
+                    <p>Building scalable applications without managing infrastructure is now a reality.</p>
+                </div>
+            </a>
+            <a href="#" class="story-card">
+                <div class="story-img">🔒</div>
+                <div class="story-content">
+                    <span class="story-tag">Security</span>
+                    <h3>Zero Trust Architecture Explained</h3>
+                    <p>Why traditional security models are evolving and what it means for your applications.</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="about">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>We're Building the Future of Technology</h2>
+                <p>At CodexLabs, we're dedicated to pushing the boundaries of what's possible. Our team of engineers and researchers work tirelessly to create tools that empower developers worldwide.</p>
+                <p>We believe in responsible innovation, integrating the highest standards of quality and security into every product we build. Our responsibility strategy addresses the issues that matter most to our community.</p>
+            </div>
+            <div class="about-stats">
+                <div class="about-stat">
+                    <div class="about-stat-num">150+</div>
+                    <div class="stat-label">Engineers</div>
+                </div>
+                <div class="about-stat">
+                    <div class="about-stat-num">$50M</div>
+                    <div class="stat-label">R&D Investment</div>
+                </div>
+                <div class="about-stat">
+                    <div class="about-stat-num">25</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+                <div class="about-stat">
+                    <div class="about-stat-num">100+</div>
+                    <div class="stat-label">Patents</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta">
+        <h2>Join Our Team</h2>
+        <p>We're looking for the brightest, most passionate innovators in technology. Find your next opportunity at CodexLabs today.</p>
+        <a href="#" class="btn btn-primary">View Open Positions</a>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>CodexLabs</h3>
+                <p>Transforming technology through innovation. We're building the tools that power the next generation of software.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Leadership</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Solutions</h4>
+                <ul>
+                    <li><a href="#">AI Platform</a></li>
+                    <li><a href="#">Cloud Services</a></li>
+                    <li><a href="#">Developer Tools</a></li>
+                    <li><a href="#">Enterprise</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Status</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            © 2026 CodexLabs. All rights reserved. | Privacy Policy | Terms of Service
+        </div>
+    </footer>
+</body>
+</html>
