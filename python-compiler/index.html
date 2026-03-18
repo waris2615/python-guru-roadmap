@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Compiler</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: #1e1e1e;
+            color: #fff;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        header {
+            background: #2d2d2d;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid #404040;
+        }
+        header h1 { font-size: 1.2rem; color: #3776ab; }
+        .logo { font-size: 1.5rem; }
+        .container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+        .editor-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid #404040;
+        }
+        .panel-header {
+            background: #2d2d2d;
+            padding: 8px 15px;
+            font-size: 0.85rem;
+            color: #aaa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .run-btn {
+            background: #3776ab;
+            color: white;
+            border: none;
+            padding: 5px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.85rem;
+        }
+        .run-btn:hover { background: #4a8bc2; }
+        #editor {
+            flex: 1;
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border: none;
+            padding: 15px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            resize: none;
+            outline: none;
+        }
+        .output-panel {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        #output {
+            flex: 1;
+            background: #1e1e1e;
+            color: #4ec9b0;
+            border: none;
+            padding: 15px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            resize: none;
+            outline: none;
+            white-space: pre-wrap;
+        }
+        .error { color: #f44747 !important; }
+        .loading {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <span class="logo">🐍</span>
+        <h1>Python Compiler</h1>
+    </header>
+    
+    <div class="container">
+        <div class="editor-panel">
+            <div class="panel-header">
+                <span>main.py</span>
+                <button class="run-btn" onclick="runCode()">▶ Run</button>
+            </div>
+            <textarea id="editor" placeholder="# Write your Python code here..."># Python Compiler
+print("Hello, World!")
+print("2 + 2 =", 2 + 2)
+print("Python is awesome!")</textarea>
+        </div>
+        
+        <div class="output-panel">
+            <div class="panel-header">
+                <span>Output</span>
+                <button onclick="clearOutput()" style="background:none;border:none;color:#aaa;cursor:pointer;">Clear</button>
+            </div>
+            <textarea id="output" readonly placeholder="Output will appear here..."></textarea>
+        </div>
+    </div>
+
+    <script>
+        // Use Piston API (free, public) - or replace with your own backend
+        const API_URL = 'https://emkc.org/api/v2/piston/execute';
+        const editor = document.getElementById('editor');
+        const outputEl = document.getElementById('output');
+
+        async function runCode() {
+            const code = editor.value;
+            if (!code.trim()) return;
+
+            outputEl.classList.add('loading');
+            outputEl.value = 'Running...';
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        language: 'python',
+                        version: '3.10.0',
+                        files: [{ content: code }]
+                    })
+                });
+
+                const result = await response.json();
+                
+                if (result.run) {
+                    const output = result.run.output || '';
+                    const stderr = result.run.stderr || '';
+                    if (stderr) {
+                        outputEl.classList.add('error');
+                        outputEl.value = stderr;
+                    } else {
+                        outputEl.classList.remove('error');
+                        outputEl.value = output || '(No output)';
+                    }
+                } else {
+                    outputEl.classList.add('error');
+                    outputEl.value = result.message || 'Unknown error';
+                }
+            } catch (err) {
+                output.classList.add('error');
+                output.value = 'Connection error: Make sure backend is running\n' + err.message;
+            }
+
+            outputEl.classList.remove('loading');
+        }
+
+        function clearOutput() {
+            outputEl.value = '';
+            outputEl.classList.remove('error');
+        }
+
+        // Ctrl+Enter to run
+        editor.addEventListener('keydown', (e) => {
+            if (e.ctrlKey && e.key === 'Enter') {
+                e.preventDefault();
+                runCode();
+            }
+        });
+    </script>
+</body>
+</html>
