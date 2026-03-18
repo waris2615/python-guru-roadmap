@@ -3,90 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CodexLabs - Pushing the Boundaries of Technology</title>
+    <title>CodexLabs - Pushing the Boundaries of Innovation</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Roboto', 'Segoe UI', system-ui, sans-serif;
             color: #333;
             line-height: 1.6;
         }
         
-        /* Navigation */
+        /* Top Utility Bar */
+        .top-bar {
+            background: #f8f9fa;
+            padding: 8px 60px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+            font-size: 0.85rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+        .top-bar a {
+            color: #495057;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .top-bar a:hover { color: #0d47a1; }
+        
+        /* Search */
+        .search-bar {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .search-bar input {
+            border: none;
+            padding: 5px 10px;
+            font-size: 0.85rem;
+            width: 180px;
+        }
+        .search-bar button {
+            background: #fff;
+            border: none;
+            padding: 5px 12px;
+            cursor: pointer;
+        }
+        
+        /* Main Navigation */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 60px;
+            padding: 18px 60px;
             background: #fff;
-            position: fixed;
-            width: 100%;
+            position: sticky;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #1a365d;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #0d47a1;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-decoration: none;
         }
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #1a365d, #2c5282);
-            border-radius: 8px;
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #0d47a1, #1976d2);
+            border-radius: 6px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff;
             font-weight: bold;
+            font-size: 1.2rem;
         }
         .nav-links {
             display: flex;
-            gap: 30px;
+            gap: 35px;
             list-style: none;
+            align-items: center;
         }
         .nav-links a {
             text-decoration: none;
-            color: #4a5568;
+            color: #333;
             font-weight: 500;
+            font-size: 0.95rem;
             transition: color 0.3s;
+            position: relative;
         }
-        .nav-links a:hover { color: #1a365d; }
-        .nav-cta {
-            background: #1a365d;
-            color: #fff !important;
-            padding: 10px 25px;
-            border-radius: 25px;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #0d47a1;
+            transition: width 0.3s;
         }
+        .nav-links a:hover::after { width: 100%; }
+        .nav-links a:hover { color: #0d47a1; }
         
         /* Hero Section */
         .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #3182ce 100%);
+            height: 85vh;
+            background: linear-gradient(135deg, rgba(13, 71, 161, 0.92) 0%, rgba(25, 118, 210, 0.88) 50%, rgba(25, 118, 210, 0.85) 100%),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5"/><circle cx="50" cy="50" r="30" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="0.5"/></svg>');
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: #fff;
             padding: 0 20px;
+            position: relative;
         }
-        .hero-content { max-width: 900px; }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"><circle cx="200" cy="200" r="150" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/><circle cx="200" cy="200" r="100" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/><circle cx="200" cy="200" r="50" fill="none" stroke="rgba(255,255,255,0.02)" stroke-width="1"/></svg>');
+            background-size: cover;
+        }
+        .hero-content { 
+            max-width: 950px; 
+            position: relative;
+            z-index: 1;
+        }
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3.8rem;
             font-weight: 300;
             margin-bottom: 25px;
-            letter-spacing: -1px;
+            letter-spacing: -0.5px;
         }
         .hero p {
-            font-size: 1.3rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin: 0 auto 40px;
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 750px;
+            margin: 0 auto 45px;
             line-height: 1.8;
+            font-weight: 300;
         }
         .hero-btns {
             display: flex;
@@ -94,52 +158,59 @@
             justify-content: center;
         }
         .btn {
-            padding: 15px 40px;
+            padding: 14px 36px;
             border-radius: 30px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
             text-decoration: none;
+            display: inline-block;
         }
         .btn-primary {
             background: #fff;
-            color: #1a365d;
+            color: #0d47a1;
             border: none;
         }
         .btn-primary:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.25);
         }
         .btn-outline {
             background: transparent;
             color: #fff;
-            border: 2px solid rgba(255,255,255,0.5);
+            border: 2px solid rgba(255,255,255,0.6);
         }
         .btn-outline:hover {
             background: rgba(255,255,255,0.1);
             border-color: #fff;
         }
         
-        /* Stats */
-        .stats {
+        /* Stats Bar */
+        .stats-bar {
             display: flex;
-            background: #f7fafc;
-            padding: 40px 60px;
-            gap: 60px;
+            background: #f8f9fa;
+            padding: 50px 60px;
+            gap: 80px;
             justify-content: center;
+            border-bottom: 1px solid #e9ecef;
         }
         .stat { text-align: center; }
         .stat-num {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #1a365d;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: #0d47a1;
+            line-height: 1;
         }
-        .stat-label { color: #718096; font-size: 0.9rem; }
+        .stat-label { 
+            color: #6c757d; 
+            font-size: 0.95rem;
+            margin-top: 8px;
+        }
         
-        /* Stories Section */
-        .stories {
-            padding: 100px 60px;
+        /* Main Content */
+        .content-section {
+            padding: 90px 60px;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -148,60 +219,75 @@
             margin-bottom: 60px;
         }
         .section-header h2 {
-            font-size: 2.5rem;
-            color: #1a365d;
+            font-size: 2.4rem;
+            color: #0d47a1;
             font-weight: 300;
             margin-bottom: 15px;
         }
         .section-header p {
-            color: #718096;
-            max-width: 600px;
+            color: #6c757d;
+            max-width: 650px;
             margin: 0 auto;
+            font-size: 1.1rem;
         }
+        
+        /* Story Cards */
         .story-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
             gap: 30px;
         }
         .story-card {
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-            transition: transform 0.3s;
+            box-shadow: 0 8px 35px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
         }
-        .story-card:hover { transform: translateY(-5px); }
+        .story-card:hover { 
+            transform: translateY(-6px); 
+            box-shadow: 0 15px 50px rgba(0,0,0,0.12);
+        }
         .story-img {
-            height: 220px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 4rem;
+            font-size: 3.5rem;
         }
-        .story-content { padding: 30px; }
+        .story-img.blue { background: linear-gradient(135deg, #0d47a1, #1976d2); }
+        .story-img.teal { background: linear-gradient(135deg, #00796b, #00897b); }
+        .story-img.purple { background: linear-gradient(135deg, #512da8, #5e35b1); }
+        
+        .story-content { padding: 28px; }
         .story-tag {
-            background: #ebf8ff;
-            color: #3182ce;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            background: #e3f2fd;
+            color: #1565c0;
+            padding: 5px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
             font-weight: 600;
             display: inline-block;
-            margin-bottom: 15px;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .story-content h3 {
-            font-size: 1.3rem;
-            color: #1a365d;
+            font-size: 1.25rem;
+            color: #1a1a1a;
             margin-bottom: 10px;
+            font-weight: 500;
         }
         .story-content p {
-            color: #718096;
+            color: #6c757d;
             font-size: 0.95rem;
+            line-height: 1.7;
         }
         
         /* About Section */
-        .about {
-            background: #f7fafc;
+        .about-section {
+            background: #f8f9fa;
             padding: 100px 60px;
         }
         .about-grid {
@@ -214,83 +300,91 @@
         }
         .about-text h2 {
             font-size: 2.2rem;
-            color: #1a365d;
+            color: #0d47a1;
             font-weight: 300;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .about-text p {
-            color: #4a5568;
+            color: #495057;
             margin-bottom: 20px;
-            line-height: 1.8;
+            line-height: 1.85;
+            font-size: 1.05rem;
         }
         .about-stats {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 30px;
+            gap: 25px;
         }
         .about-stat {
             background: #fff;
-            padding: 30px;
-            border-radius: 15px;
+            padding: 35px 25px;
+            border-radius: 12px;
             text-align: center;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
         }
         .about-stat-num {
-            font-size: 2rem;
-            font-weight: bold;
-            color: #3182ce;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1976d2;
+        }
+        .about-stat-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: 5px;
         }
         
         /* CTA Section */
-        .cta {
-            background: linear-gradient(135deg, #1a365d, #2c5282);
+        .cta-section {
+            background: linear-gradient(135deg, #0d47a1, #1976d2);
             padding: 100px 60px;
             text-align: center;
             color: #fff;
         }
-        .cta h2 {
+        .cta-section h2 {
             font-size: 2.5rem;
             font-weight: 300;
             margin-bottom: 20px;
         }
-        .cta p {
+        .cta-section p {
             font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 600px;
+            opacity: 0.95;
+            max-width: 650px;
             margin: 0 auto 40px;
+            font-weight: 300;
         }
         
         /* Footer */
         footer {
-            background: #1a202c;
+            background: #1a1a2e;
             color: #a0aec0;
-            padding: 60px 60px 30px;
+            padding: 70px 60px 30px;
         }
-        .footer-grid {
+        .footer-main {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto 40px;
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            gap: 50px;
+            max-width: 1300px;
+            margin: 0 auto 50px;
         }
-        .footer-brand h3 {
+        .footer-brand .logo {
             color: #fff;
-            font-size: 1.3rem;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
         .footer-brand p {
             font-size: 0.9rem;
             line-height: 1.7;
+            color: #a0aec0;
         }
         .footer-col h4 {
             color: #fff;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 22px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.2px;
+            font-weight: 600;
         }
         .footer-col ul { list-style: none; }
-        .footer-col li { margin-bottom: 10px; }
+        .footer-col li { margin-bottom: 12px; }
         .footer-col a {
             color: #a0aec0;
             text-decoration: none;
@@ -300,50 +394,81 @@
         .footer-col a:hover { color: #fff; }
         .footer-bottom {
             text-align: center;
-            padding-top: 30px;
+            padding-top: 35px;
             border-top: 1px solid #2d3748;
             font-size: 0.85rem;
+            display: flex;
+            justify-content: space-between;
+            max-width: 1300px;
+            margin: 0 auto;
         }
+        .footer-bottom-links a {
+            color: #a0aec0;
+            margin-left: 25px;
+            text-decoration: none;
+        }
+        .footer-bottom-links a:hover { color: #fff; }
         
-        /* Mobile */
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .top-bar, nav, .stats-bar, .content-section, .about-section, .cta-section, footer { padding-left: 30px; padding-right: 30px; }
+            .footer-main { grid-template-columns: 1fr 1fr; }
+        }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            nav { padding: 15px 20px; }
+            .hero h1 { font-size: 2.4rem; }
+            .top-bar { display: none; }
             .nav-links { display: none; }
-            .stats { flex-wrap: wrap; gap: 30px; }
-            .stories, .about, .cta { padding: 60px 20px; }
+            .stats-bar { flex-wrap: wrap; gap: 40px; }
             .about-grid { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero-btns { flex-direction: column; align-items: center; }
+            .footer-main { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 15px; }
+            .footer-bottom-links { margin-top: 10px; }
         }
     </style>
 </head>
 <body>
+    <!-- Top Utility Bar -->
+    <div class="top-bar">
+        <a href="#">Investors & Media</a>
+        <a href="#">Careers</a>
+        <a href="#">Clinical Trials</a>
+        <a href="#">Contact Us</a>
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+            <button>🔍</button>
+        </div>
+    </div>
+
+    <!-- Main Navigation -->
     <nav>
-        <div class="logo">
+        <a href="#" class="logo">
             <div class="logo-icon">C</div>
             CodexLabs
-        </div>
+        </a>
         <ul class="nav-links">
+            <li><a href="#">About</a></li>
             <li><a href="#">Science</a></li>
+            <li><a href="#">Solutions</a></li>
             <li><a href="#">Responsibility</a></li>
-            <li><a href="#">Careers</a></li>
-            <li><a href="#">Clinical Trials</a></li>
-            <li><a href="#" class="nav-cta">Explore</a></li>
+            <li><a href="#">Stories</a></li>
         </ul>
     </nav>
 
+    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <h1>Pushing the Boundaries of Innovation</h1>
-            <p>We're driven by the pursuit of technological breakthroughs, seeking innovative solutions for developers and businesses. From AI to cloud infrastructure, we turn cutting-edge science into transformative tools.</p>
+            <p>We're driven by the pursuit of technological breakthroughs, seeking innovative solutions for developers and businesses worldwide. From AI to cloud infrastructure, we turn cutting-edge science into transformative tools that redefine what's possible.</p>
             <div class="hero-btns">
-                <a href="index.html" class="btn btn-primary">Our Platform</a>
-                <a href="#" class="btn btn-outline">Learn More</a>
+                <a href="index.html" class="btn btn-primary">Explore Platform</a>
+                <a href="#" class="btn btn-outline">Our Mission</a>
             </div>
         </div>
     </section>
 
-    <section class="stats">
+    <!-- Stats Bar -->
+    <div class="stats-bar">
         <div class="stat">
             <div class="stat-num">500K+</div>
             <div class="stat-label">Active Developers</div>
@@ -358,34 +483,35 @@
         </div>
         <div class="stat">
             <div class="stat-num">99.9%</div>
-            <div class="stat-label">Uptime</div>
+            <div class="stat-label">Uptime SLA</div>
         </div>
-    </section>
+    </div>
 
-    <section class="stories">
+    <!-- Stories Section -->
+    <section class="content-section">
         <div class="section-header">
             <h2>Latest Stories</h2>
-            <p>Discover how we're transforming the technology landscape through innovation and dedication.</p>
+            <p>Discover how we're transforming the technology landscape through innovation and dedicated research.</p>
         </div>
         <div class="story-grid">
             <a href="#" class="story-card">
-                <div class="story-img">🤖</div>
+                <div class="story-img blue">🤖</div>
                 <div class="story-content">
                     <span class="story-tag">Artificial Intelligence</span>
                     <h3>How AI is Revolutionizing Code Generation</h3>
-                    <p>Our latest breakthrough in machine learning is helping developers write better code faster.</p>
+                    <p>Our latest breakthrough in machine learning is helping developers write better code, faster.</p>
                 </div>
             </a>
             <a href="#" class="story-card">
-                <div class="story-img">☁️</div>
+                <div class="story-img teal">☁️</div>
                 <div class="story-content">
                     <span class="story-tag">Cloud Infrastructure</span>
                     <h3>The Future of Serverless Computing</h3>
-                    <p>Building scalable applications without managing infrastructure is now a reality.</p>
+                    <p>Building scalable applications without managing infrastructure is now a reality for teams.</p>
                 </div>
             </a>
             <a href="#" class="story-card">
-                <div class="story-img">🔒</div>
+                <div class="story-img purple">🔐</div>
                 <div class="story-content">
                     <span class="story-tag">Security</span>
                     <h3>Zero Trust Architecture Explained</h3>
@@ -395,53 +521,68 @@
         </div>
     </section>
 
-    <section class="about">
+    <!-- About Section -->
+    <section class="about-section">
         <div class="about-grid">
             <div class="about-text">
                 <h2>We're Building the Future of Technology</h2>
                 <p>At CodexLabs, we're dedicated to pushing the boundaries of what's possible. Our team of engineers and researchers work tirelessly to create tools that empower developers worldwide.</p>
-                <p>We believe in responsible innovation, integrating the highest standards of quality and security into every product we build. Our responsibility strategy addresses the issues that matter most to our community.</p>
+                <p>We believe in responsible innovation, integrating the highest standards of quality and security into every product we build. Our responsibility strategy addresses the issues that matter most to our community and stakeholders.</p>
             </div>
             <div class="about-stats">
                 <div class="about-stat">
                     <div class="about-stat-num">150+</div>
-                    <div class="stat-label">Engineers</div>
+                    <div class="about-stat-label">Engineers</div>
                 </div>
                 <div class="about-stat">
                     <div class="about-stat-num">$50M</div>
-                    <div class="stat-label">R&D Investment</div>
+                    <div class="about-stat-label">R&D Investment</div>
                 </div>
                 <div class="about-stat">
                     <div class="about-stat-num">25</div>
-                    <div class="stat-label">Countries</div>
+                    <div class="about-stat-label">Countries</div>
                 </div>
                 <div class="about-stat">
                     <div class="about-stat-num">100+</div>
-                    <div class="stat-label">Patents</div>
+                    <div class="about-stat-label">Patents</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="cta">
+    <!-- CTA Section -->
+    <section class="cta-section">
         <h2>Join Our Team</h2>
         <p>We're looking for the brightest, most passionate innovators in technology. Find your next opportunity at CodexLabs today.</p>
         <a href="#" class="btn btn-primary">View Open Positions</a>
     </section>
 
+    <!-- Footer -->
     <footer>
-        <div class="footer-grid">
+        <div class="footer-main">
             <div class="footer-brand">
-                <h3>CodexLabs</h3>
-                <p>Transforming technology through innovation. We're building the tools that power the next generation of software.</p>
+                <a href="#" class="logo">
+                    <div class="logo-icon">C</div>
+                    CodexLabs
+                </a>
+                <p>Transforming technology through innovation. We're building the tools that power the next generation of software and services.</p>
             </div>
             <div class="footer-col">
-                <h4>Company</h4>
+                <h4>About</h4>
                 <ul>
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Our Company</a></li>
                     <li><a href="#">Leadership</a></li>
                     <li><a href="#">Careers</a></li>
                     <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Science</h4>
+                <ul>
+                    <li><a href="#">Research & Development</a></li>
+                    <li><a href="#">Pipeline</a></li>
+                    <li><a href="#">Technologies</a></li>
+                    <li><a href="#">Publications</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -464,7 +605,12 @@
             </div>
         </div>
         <div class="footer-bottom">
-            © 2026 CodexLabs. All rights reserved. | Privacy Policy | Terms of Service
+            <span>© 2026 CodexLabs. All rights reserved.</span>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
         </div>
     </footer>
 </body>
