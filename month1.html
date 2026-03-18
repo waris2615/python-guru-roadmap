@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Guru Roadmap - Month 1</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
+            min-height: 100vh;
+        }
+        .container { max-width: 900px; margin: 0 auto; padding: 40px 20px; }
+        
+        header { text-align: center; margin-bottom: 40px; }
+        .logo { font-size: 3rem; margin-bottom: 10px; }
+        h1 { font-size: 2rem; color: #3776ab; }
+        .subtitle { color: #aaa; margin-top: 10px; }
+        
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #ffd43b;
+            text-decoration: none;
+        }
+        .back-link:hover { text-decoration: underline; }
+        
+        .month-header {
+            background: linear-gradient(90deg, #3776ab, #ffd43b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        .month-desc { color: #aaa; margin-bottom: 30px; }
+        
+        .week { 
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .week h2 {
+            color: #ffd43b;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .week-tag {
+            background: #3776ab;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.75rem;
+        }
+        
+        .day {
+            display: flex;
+            gap: 15px;
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .day:last-child { border: none; }
+        .day-num {
+            background: #333;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            flex-shrink: 0;
+        }
+        .day-content h4 { color: #4ec9b0; font-size: 0.95rem; margin-bottom: 5px; }
+        .day-content p { color: #888; font-size: 0.85rem; }
+        
+        .project {
+            background: rgba(55, 118, 171, 0.2);
+            border: 1px solid #3776ab;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 15px;
+        }
+        .project h4 { color: #ffd43b; margin-bottom: 10px; }
+        .project p { color: #aaa; font-size: 0.9rem; }
+        .project-link {
+            display: inline-block;
+            margin-top: 10px;
+            color: #fff;
+            background: #3776ab;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+        
+        footer {
+            text-align: center;
+            color: #666;
+            font-size: 0.85rem;
+            padding-top: 30px;
+        }
+        footer a { color: #3776ab; text-decoration: none; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-link">← Back to Home</a>
+        
+        <header>
+            <div class="logo">🏗️</div>
+            <h1>Month 1: The Architectural Core</h1>
+            <p class="subtitle">Weeks 1-4 · Building the Foundation</p>
+        </header>
+
+        <!-- WEEK 1 -->
+        <div class="week">
+            <h2><span class="week-tag">Week 1</span> Variables & Data Types</h2>
+            
+            <div class="day">
+                <div class="day-num">1</div>
+                <div class="day-content">
+                    <h4>Variables & Print</h4>
+                    <p>Learn to store data in variables and display output. String, int, float, bool types.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">2</div>
+                <div class="day-content">
+                    <h4>User Input</h4>
+                    <p>Get input from users. Type conversion (str → int → float).</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">3</div>
+                <div class="day-content">
+                    <h4>String Formatting</h4>
+                    <p>f-strings, concatenation, escape characters.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">4</div>
+                <div class="day-content">
+                    <h4>Math Operators</h4>
+                    <p>+, -, *, /, //, %, **. Order of operations.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">5</div>
+                <div class="day-content">
+                    <h4>Mini Project: Calculator</h4>
+                    <p>Build a CLI calculator with input → calculate → output.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 2 -->
+        <div class="week">
+            <h2><span class="week-tag">Week 2</span> Conditions & Loops</h2>
+            
+            <div class="day">
+                <div class="day-num">1</div>
+                <div class="day-content">
+                    <h4>If/Else Statements</h4>
+                    <p>Decision making with conditional logic.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">2</div>
+                <div class="day-content">
+                    <h4>Comparison Operators</h4>
+                    <p>==, !=, <, >, <=, >=. Boolean logic.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">3</div>
+                <div class="day-content">
+                    <h4>For Loops</h4>
+                    <p>Iterate over ranges and sequences.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">4</div>
+                <div class="day-content">
+                    <h4>While Loops</h4>
+                    <p>Loop with conditions. Break and continue.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">5</div>
+                <div class="day-content">
+                    <h4>Mini Project: Number Guessing Game</h4>
+                    <p>Computer picks random number, user guesses.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 3 -->
+        <div class="week">
+            <h2><span class="week-tag">Week 3</span> Data Structures</h2>
+            
+            <div class="day">
+                <div class="day-num">1</div>
+                <div class="day-content">
+                    <h4>Lists</h4>
+                    <p>Create, access, modify lists. append(), remove(), etc.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">2</div>
+                <div class="day-content">
+                    <h4>Tuples & Sets</h4>
+                    <p>Immutable sequences. Unique values.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">3</div>
+                <div class="day-content">
+                    <h4>Dictionaries</h4>
+                    <p>Key-value pairs. Create, access, update.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">4</div>
+                <div class="day-content">
+                    <h4>List Comprehension</h4>
+                    <p>Compact way to create lists.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">5</div>
+                <div class="day-content">
+                    <h4>Mini Project: Todo List</h4>
+                    <p>Add, remove, mark complete tasks.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- WEEK 4 -->
+        <div class="week">
+            <h2><span class="week-tag">Week 4</span> Functions & OOP</h2>
+            
+            <div class="day">
+                <div class="day-num">1</div>
+                <div class="day-content">
+                    <h4>Functions</h4>
+                    <p>def, parameters, return values, scope.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">2</div>
+                <div class="day-content">
+                    <h4>Arguments & kwargs</h4>
+                    <p>*args, **kwargs. Flexible functions.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">3</div>
+                <div class="day-content">
+                    <h4>Intro to OOP</h4>
+                    <p>Classes, objects, __init__, self.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">4</div>
+                <div class="day-content">
+                    <h4>Class Methods</h4>
+                    <p>Instance methods, @staticmethod, @classmethod.</p>
+                </div>
+            </div>
+            <div class="day">
+                <div class="day-num">5</div>
+                <div class="day-content">
+                    <h4>🔧 Main Project: Task Manager</h4>
+                    <p>Full CLI app with SQLite database.</p>
+                </div>
+            </div>
+            
+            <div class="project">
+                <h4>📋 Month 1 Final Project: Logic Engine CLI</h4>
+                <p>Build a task management CLI with SQLite. Features: add, list, complete, delete tasks. Use OOP, type hints, context managers.</p>
+                <a href="logic_engine/" class="project-link">View Project →</a>
+            </div>
+        </div>
+
+        <footer>
+            <p>Built with 🦊 by <a href="https://github.com/waris2615">Olami</a></p>
+        </footer>
+    </div>
+</body>
+</html>
