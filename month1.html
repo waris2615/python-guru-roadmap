@@ -928,7 +928,7 @@ print(f"{a} / {b} = {a / b}")</textarea>
                 const py = await initPyodide();
                 
                 // Replace input() with js.prompt()
-                const wrappedCode = `
+                const setupCode = `
 import sys
 from io import StringIO
 from js import prompt
@@ -941,7 +941,8 @@ class BrowserInput:
 sys.stdin = BrowserInput()
 sys.stdout = StringIO()
 sys.stderr = StringIO()
-                ` + "\n" + code;
+`;
+                const wrappedCode = setupCode + code;
                 
                 await py.runPythonAsync(wrappedCode);
                 
