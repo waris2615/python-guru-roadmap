@@ -279,11 +279,9 @@ print(f"My name is {name}, I'm {age} years old")</textarea>
                 
                 <div class="compiler-box">
                     <h5>⚡ Try It Now</h5>
-                    <textarea id="code2"># Note: input() doesn't work in browser
-# Use hardcoded values instead
-name = "Olami"
-age = 25
-
+                    <textarea id="code2"># input() now works in browser!
+name = input("Your name: ")
+age = input("Your age: ")
 print(f"Hello {name}, you are {age} years old")</textarea>
                     <div class="btn-row">
                         <button onclick="runCode(this)">▶ Run</button>
@@ -929,30 +927,28 @@ print(f"{a} / {b} = {a / b}")</textarea>
             try {
                 const py = await initPyodide();
                 
-                // Replace input() with browser prompt()
+                // Replace input() with js.prompt()
                 const wrappedCode = `
 import sys
+from io import StringIO
 from js import prompt
 
-class InputReplacer:
-    def __init__(self):
-        self.buffer = []
-    
+class BrowserInput:
     def readline(self, prompt_text=""):
-        result = prompt(prompt_text) or ""
-        return result + "\n"
+        result = prompt(prompt_text)
+        return (result if result else "") + "\n"
 
-sys.stdin = InputReplacer()
+sys.stdin = BrowserInput()
 sys.stdout = StringIO()
 sys.stderr = StringIO()
-                ` + code;
+                ` + "\n" + code;
                 
                 await py.runPythonAsync(wrappedCode);
                 
                 const stdout = py.runPython("sys.stdout.getvalue()");
                 const stderr = py.runPython("sys.stderr.getvalue()");
                 
-                py.runPython(`sys.stdout = sys.__stdout__; sys.stderr = sys.__stderr__`);
+                py.runPython(`sys.stdout = sys.__stdout__; sys.stderr = sys.__stderr__; sys.stdin = sys.__stdin__`);
                 
                 if (stderr) {
                     output.classList.add('error');
