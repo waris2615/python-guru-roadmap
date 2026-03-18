@@ -25,7 +25,6 @@
             color: #ffd43b;
             text-decoration: none;
         }
-        .back-link:hover { text-decoration: underline; }
         
         .month-header {
             background: linear-gradient(90deg, #3776ab, #ffd43b);
@@ -35,7 +34,6 @@
             font-size: 1.8rem;
             margin-bottom: 10px;
         }
-        .month-desc { color: #aaa; margin-bottom: 30px; }
         
         .week { 
             background: rgba(255,255,255,0.05);
@@ -47,7 +45,7 @@
         .week h2 {
             color: #ffd43b;
             font-size: 1.2rem;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -60,45 +58,84 @@
         }
         
         .day {
-            display: flex;
-            gap: 15px;
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            background: rgba(0,0,0,0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
         }
-        .day:last-child { border: none; }
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
         .day-num {
-            background: #333;
-            width: 30px;
-            height: 30px;
+            background: #3776ab;
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 0.8rem;
+            font-weight: bold;
             flex-shrink: 0;
         }
-        .day-content h4 { color: #4ec9b0; font-size: 0.95rem; margin-bottom: 5px; }
-        .day-content p { color: #888; font-size: 0.85rem; }
+        .day-title { color: #4ec9b0; font-size: 1.1rem; }
         
-        .project {
-            background: rgba(55, 118, 171, 0.2);
-            border: 1px solid #3776ab;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 15px;
+        .section-box {
+            background: rgba(255,255,255,0.03);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 12px;
         }
-        .project h4 { color: #ffd43b; margin-bottom: 10px; }
-        .project p { color: #aaa; font-size: 0.9rem; }
-        .project-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: #fff;
-            background: #3776ab;
-            padding: 8px 15px;
-            border-radius: 5px;
-            text-decoration: none;
+        .section-box:last-child { margin-bottom: 0; }
+        
+        .section-title {
+            color: #ffd43b;
             font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
         }
+        
+        .tutor p { color: #ccc; line-height: 1.6; font-size: 0.95rem; }
+        .tutor code {
+            background: #2d2d2d;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #e6a7ff;
+        }
+        
+        .practice ul {
+            margin: 0;
+            padding-left: 20px;
+            color: #aaa;
+        }
+        .practice li { margin-bottom: 6px; }
+        
+        .challenge-box {
+            background: rgba(55, 118, 171, 0.15);
+            border-left: 3px solid #3776ab;
+            padding: 12px 15px;
+            border-radius: 0 8px 8px 0;
+        }
+        .challenge-box code {
+            background: #1a1a1a;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: monospace;
+            color: #4ec9b0;
+        }
+        
+        .mini-project {
+            background: rgba(255, 212, 59, 0.1);
+            border: 1px solid #ffd43b;
+            border-radius: 8px;
+            padding: 15px;
+        }
+        .mini-project h4 { color: #ffd43b; margin-bottom: 8px; }
+        .mini-project p { color: #aaa; font-size: 0.9rem; }
         
         footer {
             text-align: center;
@@ -106,7 +143,6 @@
             font-size: 0.85rem;
             padding-top: 30px;
         }
-        footer a { color: #3776ab; text-decoration: none; }
     </style>
 </head>
 <body>
@@ -121,41 +157,153 @@
 
         <!-- WEEK 1 -->
         <div class="week">
-            <h2 id="week1"><span class="week-tag">Week 1</span> Variables & Data Types</h2>
+            <h2><span class="week-tag">Week 1</span> Variables & Data Types</h2>
             
+            <!-- DAY 1 -->
             <div class="day" id="day1">
-                <div class="day-num">1</div>
-                <div class="day-content">
-                    <h4>Variables & Print</h4>
-                    <p>Learn to store data in variables and display output. String, int, float, bool types.</p>
+                <div class="day-header">
+                    <div class="day-num">1</div>
+                    <div class="day-title">Variables & Print</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>Variables are containers for storing data. Python automatically detects the type. Print displays output.</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p>Variables store values. No need to declare type — Python figures it out:</p>
+                    <p><code>name = "Olami"</code> → string</p>
+                    <p><code>age = 25</code> → integer</p>
+                    <p><code>price = 19.99</code> → float</p>
+                    <p><code>is_active = True</code> → boolean</p>
+                    <p>Print shows output. Use f-strings for formatted output:</p>
+                    <p><code>print(f"Hello, {name}!")</code></p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Create a variable for your name</li>
+                        <li>Create a variable for your age</li>
+                        <li>Print both using f-string</li>
+                    </ul>
                 </div>
             </div>
-            <div class="day">
-                <div class="day-num">2</div>
-                <div class="day-content">
-                    <h4>User Input</h4>
-                    <p>Get input from users. Type conversion (str → int → float).</p>
+            
+            <!-- DAY 2 -->
+            <div class="day" id="day2">
+                <div class="day-header">
+                    <div class="day-num">2</div>
+                    <div class="day-title">User Input</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>input() gets data from users. Always returns string — convert with int() or float().</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p>Get input from users:</p>
+                    <p><code>name = input("What's your name? ")</code></p>
+                    <p><code>age = int(input("Your age: "))</code></p>
+                    <p><code>price = float(input("Price: "))</code></p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Ask for user's name</li>
+                        <li>Ask for their age</li>
+                        <li>Print a greeting with both</li>
+                    </ul>
                 </div>
             </div>
-            <div class="day">
-                <div class="day-num">3</div>
-                <div class="day-content">
-                    <h4>String Formatting</h4>
-                    <p>f-strings, concatenation, escape characters.</p>
+            
+            <!-- DAY 3 -->
+            <div class="day" id="day3">
+                <div class="day-header">
+                    <div class="day-num">3</div>
+                    <div class="day-title">String Formatting</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>f-strings format text cleanly. Concatenate with +, escape with \.</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p>f-strings (recommended):</p>
+                    <p><code>f"Hello, {name}!"</code></p>
+                    <p>Concatenation:</p>
+                    <p><code>"Hello, " + name</code></p>
+                    <p>Escape characters:</p>
+                    <p><code>"Line 1\nLine 2"</code> (new line)</p>
+                    <p><code>"She said \"hi\""</code> (quotes)</p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Create variable with quotes in it</li>
+                        <li>Print on two lines using \n</li>
+                        <li>Use f-string to combine 3 variables</li>
+                    </ul>
                 </div>
             </div>
-            <div class="day">
-                <div class="day-num">4</div>
-                <div class="day-content">
-                    <h4>Math Operators</h4>
-                    <p>+, -, *, /, //, %, **. Order of operations.</p>
+            
+            <!-- DAY 4 -->
+            <div class="day" id="day4">
+                <div class="day-header">
+                    <div class="day-num">4</div>
+                    <div class="day-title">Math Operators</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>Python handles math: +, -, *, /, // (floor), % (modulo), ** (power).</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p><code>a + b</code> → addition</p>
+                    <p><code>a - b</code> → subtraction</p>
+                    <p><code>a * b</code> → multiplication</p>
+                    <p><code>a / b</code> → division (decimal)</p>
+                    <p><code>a // b</code> → floor division (whole)</p>
+                    <p><code>a % b</code> → remainder (modulo)</p>
+                    <p><code>a ** b</code> → power (a^b)</p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Calculate 10 + 5, print result</li>
+                        <li>Find remainder of 17 ÷ 5</li>
+                        <li>Calculate 2 to the power of 10</li>
+                    </ul>
                 </div>
             </div>
-            <div class="day">
-                <div class="day-num">5</div>
-                <div class="day-content">
-                    <h4>Mini Project: Calculator</h4>
-                    <p>Build a CLI calculator with input → calculate → output.</p>
+            
+            <!-- DAY 5 -->
+            <div class="day" id="day5">
+                <div class="day-header">
+                    <div class="day-num">5</div>
+                    <div class="day-title">Mini Project: Calculator</div>
+                </div>
+                
+                <div class="mini-project">
+                    <h4>🔧 Project: CLI Calculator</h4>
+                    <p>Build a calculator that:</p>
+                    <ul>
+                        <li>Asks for first number</li>
+                        <li>Asks for operation (+, -, *, /)</li>
+                        <li>Asks for second number</li>
+                        <li>Prints the result</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -164,39 +312,160 @@
         <div class="week">
             <h2><span class="week-tag">Week 2</span> Conditions & Loops</h2>
             
-            <div class="day">
-                <div class="day-num">1</div>
-                <div class="day-content">
-                    <h4>If/Else Statements</h4>
-                    <p>Decision making with conditional logic.</p>
+            <!-- DAY 1 -->
+            <div class="day" id="day6">
+                <div class="day-header">
+                    <div class="day-num">1</div>
+                    <div class="day-title">If/Else Statements</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>if/else makes decisions. Code runs based on conditions being True or False.</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p><code>if age >= 18:</code></p>
+                    <p><code>&nbsp;&nbsp;print("Adult")</code></p>
+                    <p><code>else:</code></p>
+                    <p><code>&nbsp;&nbsp;print("Minor")</code></p>
+                    <p>elif for multiple conditions:</p>
+                    <p><code>if score >= 90: print("A")</code></p>
+                    <p><code>elif score >= 80: print("B")</code></p>
+                    <p><code>else: print("C")</code></p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Check if number is positive/negative</li>
+                        <li>Check if user can vote (age >= 18)</li>
+                        <li>Use elif for A/B/C grades</li>
+                    </ul>
                 </div>
             </div>
-            <div class="day">
-                <div class="day-num">2</div>
-                <div class="day-content">
-                    <h4>Comparison Operators</h4>
-                    <p>==, !=, <, >, <=, >=. Boolean logic.</p>
+            
+            <!-- DAY 2 -->
+            <div class="day" id="day7">
+                <div class="day-header">
+                    <div class="day-num">2</div>
+                    <div class="day-title">Comparison Operators</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>Compare values: == (equal), != (not equal), <, >, <=, >=. Returns True/False.</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p><code>a == b</code> → equal</p>
+                    <p><code>a != b</code> → not equal</p>
+                    <p><code>a < b</code> → less than</p>
+                    <p><code>a > b</code> → greater than</p>
+                    <p><code>a <= b</code> → less or equal</p>
+                    <p><code>a >= b</code> → greater or equal</p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Compare 5 == 5 (True?)</li>
+                        <li>Compare "hello" != "world"</li>
+                        <li>Check if 10 > 5 and 10 > 20</li>
+                    </ul>
                 </div>
             </div>
-            <div class="day">
-                <div class="day-num">3</div>
-                <div class="day-content">
-                    <h4>For Loops</h4>
-                    <p>Iterate over ranges and sequences.</p>
+            
+            <!-- DAY 3 -->
+            <div class="day" id="day8">
+                <div class="day-header">
+                    <div class="day-num">3</div>
+                    <div class="day-title">For Loops</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>for loops repeat code for each item in a sequence. range() generates numbers.</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p>Loop through range:</p>
+                    <p><code>for i in range(5):</code></p>
+                    <p><code>&nbsp;&nbsp;print(i)</code> → 0,1,2,3,4</p>
+                    <p>range(start, end):</p>
+                    <p><code>for i in range(1, 6):</code></p>
+                    <p><code>&nbsp;&nbsp;print(i)</code> → 1,2,3,4,5</p>
+                    <p>Loop through list:</p>
+                    <p><code>fruits = ["apple", "banana"]</code></p>
+                    <p><code>for fruit in fruits:</code></p>
+                    <p><code>&nbsp;&nbsp;print(fruit)</code></p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Print numbers 1 to 10</li>
+                        <li>Print even numbers 2-20</li>
+                        <li>Loop through list and print each</li>
+                    </ul>
                 </div>
             </div>
-            <div class="day">
-                <div class="day-num">4</div>
-                <div class="day-content">
-                    <h4>While Loops</h4>
-                    <p>Loop with conditions. Break and continue.</p>
+            
+            <!-- DAY 4 -->
+            <div class="day" id="day9">
+                <div class="day-header">
+                    <div class="day-num">4</div>
+                    <div class="day-title">While Loops</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>while loops repeat while condition is True. Use break to exit, continue to skip.</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p>Basic while:</p>
+                    <p><code>count = 0</code></p>
+                    <p><code>while count < 5:</code></p>
+                    <p><code>&nbsp;&nbsp;print(count)</code></p>
+                    <p><code>&nbsp;&nbsp;count += 1</code></p>
+                    <p>Break (exit loop):</p>
+                    <p><code>while True:</code></p>
+                    <p><code>&nbsp;&nbsp;if input("quit? ") == "yes":</code></p>
+                    <p><code>&nbsp;&nbsp;&nbsp;&nbsp;break</code></p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Countdown from 5 to 1</li>
+                        <li>While loop that runs until user types "stop"</li>
+                        <li>Use break to exit infinite loop</li>
+                    </ul>
                 </div>
             </div>
-            <div class="day">
-                <div class="day-num">5</div>
-                <div class="day-content">
-                    <h4>Mini Project: Number Guessing Game</h4>
-                    <p>Computer picks random number, user guesses.</p>
+            
+            <!-- DAY 5 -->
+            <div class="day" id="day10">
+                <div class="day-header">
+                    <div class="day-num">5</div>
+                    <div class="day-title">Mini Project: Number Guessing</div>
+                </div>
+                
+                <div class="mini-project">
+                    <h4>🔧 Project: Number Guessing Game</h4>
+                    <p>Build a game that:</p>
+                    <ul>
+                        <li>Picks random number (1-100)</li>
+                        <li>User guesses</li>
+                        <li>Tell them "too high" or "too low"</li>
+                        <li>Count attempts</li>
+                    </ul>
+                    <p>Tip: <code>import random; num = random.randint(1, 100)</code></p>
                 </div>
             </div>
         </div>
@@ -205,39 +474,158 @@
         <div class="week">
             <h2><span class="week-tag">Week 3</span> Data Structures</h2>
             
-            <div class="day">
-                <div class="day-num">1</div>
-                <div class="day-content">
-                    <h4>Lists</h4>
-                    <p>Create, access, modify lists. append(), remove(), etc.</p>
+            <!-- DAY 1 -->
+            <div class="day" id="day11">
+                <div class="day-header">
+                    <div class="day-num">1</div>
+                    <div class="day-title">Lists</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>Lists hold multiple items. Ordered, mutable (changeable). Index starts at 0.</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p>Create list:</p>
+                    <p><code>fruits = ["apple", "banana", "cherry"]</code></p>
+                    <p>Access items:</p>
+                    <p><code>fruits[0]</code> → "apple"</p>
+                    <p><code>fruits[-1]</code> → "cherry" (last)</p>
+                    <p>Modify:</p>
+                    <p><code>fruits.append("orange")</code></p>
+                    <p><code>fruits[0] = "mango"</code></p>
+                    <p><code>fruits.remove("banana")</code></p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Create list of 5 colors</li>
+                        <li>Print 2nd and 4th items</li>
+                        <li>Add new color, remove one</li>
+                    </ul>
                 </div>
             </div>
-            <div class="day">
-                <div class="day-num">2</div>
-                <div class="day-content">
-                    <h4>Tuples & Sets</h4>
-                    <p>Immutable sequences. Unique values.</p>
+            
+            <!-- DAY 2 -->
+            <div class="day" id="day12">
+                <div class="day-header">
+                    <div class="day-num">2</div>
+                    <div class="day-title">Tuples & Sets</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>Tuples are immutable (can't change). Sets have unique values only.</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p>Tuple (immutable):</p>
+                    <p><code>point = (10, 20)</code></p>
+                    <p><code>x, y = point</code> → unpacking</p>
+                    <p>Set (unique values):</p>
+                    <p><code>numbers = {1, 2, 3, 3, 3}</code></p>
+                    <p><code>print(numbers)</code> → {1, 2, 3}</p>
+                    <p><code>numbers.add(4)</code></p>
+                    <p><code>numbers.remove(2)</code></p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Create tuple with coordinates</li>
+                        <li>Unpack tuple into x, y</li>
+                        <li>Create set with duplicates, see result</li>
+                    </ul>
                 </div>
             </div>
-            <div class="day">
-                <div class="day-num">3</div>
-                <div class="day-content">
-                    <h4>Dictionaries</h4>
-                    <p>Key-value pairs. Create, access, update.</p>
+            
+            <!-- DAY 3 -->
+            <div class="day" id="day13">
+                <div class="day-header">
+                    <div class="day-num">3</div>
+                    <div class="day-title">Dictionaries</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>Dictionaries store key-value pairs. Fast lookup by key.</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p>Create dict:</p>
+                    <p><code>person = {"name": "Olami", "age": 25}</code></p>
+                    <p>Access:</p>
+                    <p><code>person["name"]</code> → "Olami"</p>
+                    <p><code>person.get("age")</code> → 25</p>
+                    <p>Modify:</p>
+                    <p><code>person["age"] = 26</code></p>
+                    <p><code>person["city"] = "NYC"</code></p>
+                    <p><code>del person["age"]</code></p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Create dict with name, email, phone</li>
+                        <li>Print each value</li>
+                        <li>Add new key, update existing</li>
+                    </ul>
                 </div>
             </div>
-            <div class="day">
-                <div class="day-num">4</div>
-                <div class="day-content">
-                    <h4>List Comprehension</h4>
-                    <p>Compact way to create lists.</p>
+            
+            <!-- DAY 4 -->
+            <div class="day" id="day14">
+                <div class="day-header">
+                    <div class="day-num">4</div>
+                    <div class="day-title">List Comprehension</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>List comprehension creates lists in one line. Compact and Pythonic.</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p>Basic:</p>
+                    <p><code>squares = [x**2 for x in range(5)]</code></p>
+                    <p><code># [0, 1, 4, 9, 16]</code></p>
+                    <p>With condition:</p>
+                    <p><code>evens = [x for x in range(10) if x % 2 == 0]</code></p>
+                    <p><code># [0, 2, 4, 6, 8]</code></p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Create list of cubes 1-5</li>
+                        <li>Filter list to get only negatives</li>
+                        <li>Double each number in list</li>
+                    </ul>
                 </div>
             </div>
-            <div class="day">
-                <div class="day-num">5</div>
-                <div class="day-content">
-                    <h4>Mini Project: Todo List</h4>
-                    <p>Add, remove, mark complete tasks.</p>
+            
+            <!-- DAY 5 -->
+            <div class="day" id="day15">
+                <div class="day-header">
+                    <div class="day-num">5</div>
+                    <div class="day-title">Mini Project: Todo List</div>
+                </div>
+                
+                <div class="mini-project">
+                    <h4>🔧 Project: Todo List</h4>
+                    <p>Build a todo list:</p>
+                    <ul>
+                        <li>Add task</li>
+                        <li>Show all tasks</li>
+                        <li>Remove task</li>
+                        <li>Use list to store tasks</li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -246,51 +634,167 @@
         <div class="week">
             <h2><span class="week-tag">Week 4</span> Functions & OOP</h2>
             
-            <div class="day">
-                <div class="day-num">1</div>
-                <div class="day-content">
-                    <h4>Functions</h4>
-                    <p>def, parameters, return values, scope.</p>
+            <!-- DAY 1 -->
+            <div class="day" id="day16">
+                <div class="day-header">
+                    <div class="day-num">1</div>
+                    <div class="day-title">Functions</div>
                 </div>
-            </div>
-            <div class="day">
-                <div class="day-num">2</div>
-                <div class="day-content">
-                    <h4>Arguments & kwargs</h4>
-                    <p>*args, **kwargs. Flexible functions.</p>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>Functions are reusable code blocks. Define with def, call by name.</p>
                 </div>
-            </div>
-            <div class="day">
-                <div class="day-num">3</div>
-                <div class="day-content">
-                    <h4>Intro to OOP</h4>
-                    <p>Classes, objects, __init__, self.</p>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p>Define function:</p>
+                    <p><code>def greet(name):</code></p>
+                    <p><code>&nbsp;&nbsp;return f"Hello, {name}!"</code></p>
+                    <p>Call it:</p>
+                    <p><code>greet("Olami")</code></p>
+                    <p>Default parameter:</p>
+                    <p><code>def greet(name="World"):</code></p>
                 </div>
-            </div>
-            <div class="day">
-                <div class="day-num">4</div>
-                <div class="day-content">
-                    <h4>Class Methods</h4>
-                    <p>Instance methods, @staticmethod, @classmethod.</p>
-                </div>
-            </div>
-            <div class="day">
-                <div class="day-num">5</div>
-                <div class="day-content">
-                    <h4>🔧 Main Project: Task Manager</h4>
-                    <p>Full CLI app with SQLite database.</p>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Create function add(a, b)</li>
+                        <li>Function with default param</li>
+                        <li>Function that returns multiple values</li>
+                    </ul>
                 </div>
             </div>
             
-            <div class="project">
-                <h4>📋 Month 1 Final Project: Logic Engine CLI</h4>
-                <p>Build a task management CLI with SQLite. Features: add, list, complete, delete tasks. Use OOP, type hints, context managers.</p>
-                <a href="logic_engine/" class="project-link">View Project →</a>
+            <!-- DAY 2 -->
+            <div class="day" id="day17">
+                <div class="day-header">
+                    <div class="day-num">2</div>
+                    <div class="day-title">Args & Kwargs</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>*args accepts multiple positional arguments. **kwargs accepts keyword arguments.</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p>*args (tuple):</p>
+                    <p><code>def sum_all(*args):</code></p>
+                    <p><code>&nbsp;&nbsp;return sum(args)</code></p>
+                    <p><code>sum_all(1, 2, 3)</code></p>
+                    <p>**kwargs (dict):</p>
+                    <p><code>def info(**kwargs):</code></p>
+                    <p><code>&nbsp;&nbsp;for k, v in kwargs.items():</code></p>
+                    <p><code>info(name="Olami", age=25)</code></p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Function that accepts any number of numbers</li>
+                        <li>Function that prints all kwargs</li>
+                        <li>Combine *args and **kwargs</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- DAY 3 -->
+            <div class="day" id="day18">
+                <div class="day-header">
+                    <div class="day-num">3</div>
+                    <div class="day-title">Intro to OOP</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>Classes define blueprints for objects. Objects have attributes (data) and methods (functions).</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p>Create class:</p>
+                    <p><code>class Person:</code></p>
+                    <p><code>&nbsp;&nbsp;def __init__(self, name, age):</code></p>
+                    <p><code>&nbsp;&nbsp;&nbsp;&nbsp;self.name = name</code></p>
+                    <p><code>&nbsp;&nbsp;&nbsp;&nbsp;self.age = age</code></p>
+                    <p>Create object:</p>
+                    <p><code>p = Person("Olami", 25)</code></p>
+                    <p><code>print(p.name)</code></p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Create Car class with brand, color</li>
+                        <li>Create object and print attributes</li>
+                        <li>Add a method to the class</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- DAY 4 -->
+            <div class="day" id="day19">
+                <div class="day-header">
+                    <div class="day-num">4</div>
+                    <div class="day-title">Class Methods</div>
+                </div>
+                
+                <div class="section-box">
+                    <div class="section-title">📖 Description</div>
+                    <p>@staticmethod doesn't need self. @classmethod gets class itself as first param.</p>
+                </div>
+                
+                <div class="section-box tutor">
+                    <div class="section-title">🎓 Tutor</div>
+                    <p>Instance method:</p>
+                    <p><code>def greet(self):</code></p>
+                    <p><code>&nbsp;&nbsp;return f"Hi, {self.name}"</code></p>
+                    <p>Static method (no access to class):</p>
+                    <p><code>@staticmethod</code></p>
+                    <p><code>def add(a, b): return a + b</code></p>
+                    <p>Class method:</p>
+                    <p><code>@classmethod</code></p>
+                    <p><code>def from_dict(cls, d):</code></p>
+                    <p><code>&nbsp;&nbsp;return cls(**d)</code></p>
+                </div>
+                
+                <div class="section-box practice">
+                    <div class="section-title">✏️ Practice</div>
+                    <ul>
+                        <li>Add static method to calculate area</li>
+                        <li>Add class method to create from dict</li>
+                        <li>Call both types of methods</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- DAY 5 -->
+            <div class="day" id="day20">
+                <div class="day-header">
+                    <div class="day-num">5</div>
+                    <div class="day-title">🔧 Main Project: Task Manager</div>
+                </div>
+                
+                <div class="mini-project" style="border-color: #28a745; background: rgba(40, 167, 69, 0.1);">
+                    <h4>📋 Month 1 Final Project: Logic Engine CLI</h4>
+                    <p>Build a full task manager:</p>
+                    <ul>
+                        <li>Use OOP (class Task)</li>
+                        <li>SQLite database</li>
+                        <li>CLI: add, list, complete, delete</li>
+                        <li>Type hints</li>
+                        <li>Context manager for DB</li>
+                    </ul>
+                    <p><a href="logic_engine/" style="color: #4ec9b0;">View Project →</a></p>
+                </div>
             </div>
         </div>
 
         <footer>
-            <p>Built with 🦊 by <a href="https://github.com/waris2615">Olami</a></p>
+            <p>Built with 🦊 by Olami</p>
         </footer>
     </div>
 </body>
