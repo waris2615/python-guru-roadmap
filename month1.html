@@ -137,6 +137,49 @@
         .mini-project h4 { color: #ffd43b; margin-bottom: 8px; }
         .mini-project p { color: #aaa; font-size: 0.9rem; }
         
+        .compiler-box {
+            margin-top: 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 15px;
+        }
+        .compiler-box h5 { color: #3776ab; margin-bottom: 10px; }
+        .compiler-box textarea {
+            width: 100%;
+            height: 120px;
+            background: #1a1a1a;
+            color: #d4d4d4;
+            border: 1px solid #333;
+            border-radius: 6px;
+            padding: 10px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+        .compiler-box .btn-row {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .compiler-box button {
+            background: #3776ab;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .compiler-box button:hover { background: #4a8bc2; }
+        .compiler-box .output {
+            margin-top: 10px;
+            background: #1a1a1a;
+            padding: 10px;
+            border-radius: 6px;
+            font-family: monospace;
+            color: #4ec9b0;
+            white-space: pre-wrap;
+            min-height: 40px;
+        }
+        .compiler-box .output.error { color: #f44747; }
+        
         footer {
             text-align: center;
             color: #666;
@@ -190,6 +233,19 @@
                         <li>Print both using f-string</li>
                     </ul>
                 </div>
+                
+                <div class="compiler-box">
+                    <h5>⚡ Try It Now</h5>
+                    <textarea id="code1"># Your code here
+name = "Olami"
+age = 25
+print(f"My name is {name}, I'm {age} years old")</textarea>
+                    <div class="btn-row">
+                        <button onclick="runCode(this)">▶ Run</button>
+                        <button onclick="this.parentElement.nextElementSibling.textContent=''" style="background:#666;">Clear</button>
+                    </div>
+                    <div class="output"></div>
+                </div>
             </div>
             
             <!-- DAY 2 -->
@@ -219,6 +275,19 @@
                         <li>Ask for their age</li>
                         <li>Print a greeting with both</li>
                     </ul>
+                </div>
+                
+                <div class="compiler-box">
+                    <h5>⚡ Try It Now</h5>
+                    <textarea id="code2"># Get input and display
+name = input("Your name: ")
+age = input("Your age: ")
+print(f"Hello {name}, you are {age} years old")</textarea>
+                    <div class="btn-row">
+                        <button onclick="runCode(this)">▶ Run</button>
+                        <button onclick="this.parentElement.nextElementSibling.textContent=''" style="background:#666;">Clear</button>
+                    </div>
+                    <div class="output"></div>
                 </div>
             </div>
             
@@ -252,6 +321,25 @@
                         <li>Print on two lines using \n</li>
                         <li>Use f-string to combine 3 variables</li>
                     </ul>
+                </div>
+                
+                <div class="compiler-box">
+                    <h5>⚡ Try It Now</h5>
+                    <textarea id="code3"># String formatting practice
+name = "Olami"
+city = "NYC"
+hobby = "coding"
+
+# Try different formatting
+print(f"{name} lives in {city} and loves {hobby}")
+
+# New line
+print("Line 1\nLine 2\nLine 3")</textarea>
+                    <div class="btn-row">
+                        <button onclick="runCode(this)">▶ Run</button>
+                        <button onclick="this.parentElement.nextElementSibling.textContent=''" style="background:#666;">Clear</button>
+                    </div>
+                    <div class="output"></div>
                 </div>
             </div>
             
@@ -304,6 +392,23 @@
                         <li>Asks for second number</li>
                         <li>Prints the result</li>
                     </ul>
+                </div>
+                
+                <div class="compiler-box">
+                    <h5>⚡ Try It Now</h5>
+                    <textarea id="code5"># Calculator - complete this!
+a = 10
+b = 5
+
+print(f"{a} + {b} = {a + b}")
+print(f"{a} - {b} = {a - b}")
+print(f"{a} * {b} = {a * b}")
+print(f"{a} / {b} = {a / b}")</textarea>
+                    <div class="btn-row">
+                        <button onclick="runCode(this)">▶ Run</button>
+                        <button onclick="this.parentElement.nextElementSibling.textContent=''" style="background:#666;">Clear</button>
+                    </div>
+                    <div class="output"></div>
                 </div>
             </div>
         </div>
@@ -797,5 +902,58 @@
             <p>Built with 🦊 by Olami</p>
         </footer>
     </div>
+
+    <!-- Pyodide for Python in browser -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.24.1/full/pyodide.js"></script>
+    <script>
+        let pyodide = null;
+        
+        async function initPyodide() {
+            if (!pyodide) {
+                pyodide = await loadPyodide();
+            }
+            return pyodide;
+        }
+
+        async function runCode(btn) {
+            const box = btn.closest('.compiler-box');
+            const code = box.querySelector('textarea').value;
+            const output = box.querySelector('.output');
+            
+            output.textContent = 'Running...';
+            output.classList.remove('error');
+            btn.disabled = true;
+            
+            try {
+                const py = await initPyodide();
+                
+                py.runPython(`
+import sys
+from io import StringIO
+sys.stdout = StringIO()
+sys.stderr = StringIO()
+                `);
+                
+                await py.runPythonAsync(code);
+                
+                const stdout = py.runPython("sys.stdout.getvalue()");
+                const stderr = py.runPython("sys.stderr.getvalue()");
+                
+                py.runPython(`sys.stdout = sys.__stdout__; sys.stderr = sys.__stderr__`);
+                
+                if (stderr) {
+                    output.classList.add('error');
+                    output.textContent = stderr;
+                } else {
+                    output.textContent = stdout || '(No output)';
+                }
+            } catch (err) {
+                output.classList.add('error');
+                output.textContent = err.message;
+            }
+            
+            btn.disabled = false;
+        }
+    </script>
 </body>
 </html>
