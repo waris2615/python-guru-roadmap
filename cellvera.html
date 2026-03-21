@@ -189,40 +189,13 @@
             display: flex;
             justify-content: center;
         }
-        .hero-card {
-            background: #fff;
+        .hero-img {
+            width: 100%;
+            max-width: 480px;
             border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 30px 80px rgba(13, 79, 79, 0.15);
-            max-width: 400px;
-        }
-        .hero-stat {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            padding: 20px 0;
-            border-bottom: 1px solid #e8f4f4;
-        }
-        .hero-stat:last-child { border-bottom: none; }
-        .stat-icon {
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #0d4f4f, #1a8a8a);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-        }
-        .stat-info h4 {
-            font-size: 1.3rem;
-            color: #0d4f4f;
-            font-weight: 700;
-        }
-        .stat-info p {
-            font-size: 0.85rem;
-            color: #6a8a8a;
-            margin: 0;
+            box-shadow: 0 30px 80px rgba(13, 79, 79, 0.2);
+            object-fit: cover;
+            height: 420px;
         }
         
         /* Features */
@@ -254,24 +227,24 @@
         }
         .feature {
             text-align: center;
-            padding: 40px 25px;
+            padding: 0;
             border-radius: 16px;
+            overflow: hidden;
             transition: all 0.3s;
+            background: #fff;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.06);
         }
         .feature:hover {
-            background: #f0f7f7;
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
         }
-        .feature-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #0d4f4f, #1a8a8a);
-            border-radius: 20px;
-            margin: 0 auto 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
+        .feature-img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+        .feature-content {
+            padding: 25px;
         }
         .feature h3 {
             font-size: 1.1rem;
@@ -296,6 +269,13 @@
             margin: 0 auto;
             align-items: center;
         }
+        .about-img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(13, 79, 79, 0.15);
+            height: 450px;
+            object-fit: cover;
+        }
         .about-text h2 {
             font-family: 'Libre Baskerville', Georgia, serif;
             font-size: 2.2rem;
@@ -311,6 +291,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+            margin-top: 30px;
         }
         .about-card {
             background: #fff;
@@ -327,6 +308,38 @@
             font-size: 0.85rem;
             color: #6a8a8a;
             margin: 0;
+        }
+        
+        /* Team Section */
+        .team {
+            padding: 100px 50px;
+            background: #fff;
+        }
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .team-member {
+            text-align: center;
+        }
+        .team-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 20px;
+        }
+        .team-member h3 {
+            color: #1a2e35;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+        .team-member p {
+            color: #6a8a8a;
+            font-size: 0.9rem;
         }
         
         /* Numbers */
@@ -352,6 +365,37 @@
         .number-item p {
             font-size: 0.95rem;
             opacity: 0.85;
+        }
+        
+        /* Lab Section */
+        .lab-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 500px;
+        }
+        .lab-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 500px;
+        }
+        .lab-content {
+            background: #0d4f4f;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            color: #fff;
+        }
+        .lab-content h2 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .lab-content p {
+            opacity: 0.9;
+            line-height: 1.8;
+            margin-bottom: 30px;
         }
         
         /* CTA */
@@ -433,11 +477,13 @@
             .hero-btns { justify-content: center; }
             .features-grid { grid-template-columns: 1fr 1fr; }
             .about-inner { grid-template-columns: 1fr; }
+            .team-grid { grid-template-columns: 1fr; }
+            .lab-section { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 600px) {
             .top-bar { flex-direction: column; gap: 10px; padding: 10px 20px; }
-            header, nav, .hero, .features, .about, .numbers, .cta, footer { padding-left: 20px; padding-right: 20px; }
+            header, nav, .hero, .features, .about, .team, .numbers, .cta, footer { padding-left: 20px; padding-right: 20px; }
             .hero h1 { font-size: 2rem; }
             .features-grid { grid-template-columns: 1fr; }
             .numbers-grid { flex-wrap: wrap; gap: 40px; }
@@ -492,29 +538,7 @@
             </div>
         </div>
         <div class="hero-visual">
-            <div class="hero-card">
-                <div class="hero-stat">
-                    <div class="stat-icon">💊</div>
-                    <div class="stat-info">
-                        <h4>85+</h4>
-                        <p>Approved Medicines</p>
-                    </div>
-                </div>
-                <div class="hero-stat">
-                    <div class="stat-icon">🌍</div>
-                    <div class="stat-info">
-                        <h4>100+</h4>
-                        <p>Countries Served</p>
-                    </div>
-                </div>
-                <div class="hero-stat">
-                    <div class="stat-icon">👥</div>
-                    <div class="stat-info">
-                        <h4>1B+</h4>
-                        <p>Patients Reached</p>
-                    </div>
-                </div>
-            </div>
+            <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&h=500&fit=crop" alt="Scientists in lab" class="hero-img">
         </div>
     </section>
 
@@ -526,24 +550,32 @@
         </div>
         <div class="features-grid">
             <div class="feature">
-                <div class="feature-icon">🧬</div>
-                <h3>Precision Medicine</h3>
-                <p>Targeted therapies designed for individual patient profiles.</p>
+                <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=400&h=250&fit=crop" alt="DNA Research" class="feature-img">
+                <div class="feature-content">
+                    <h3>Precision Medicine</h3>
+                    <p>Targeted therapies designed for individual patient profiles.</p>
+                </div>
             </div>
             <div class="feature">
-                <div class="feature-icon">🫀</div>
-                <h3>Cardiovascular</h3>
-                <p>Innovative treatments for heart and blood conditions.</p>
+                <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=400&h=250&fit=crop" alt="Cardiovascular" class="feature-img">
+                <div class="feature-content">
+                    <h3>Cardiovascular</h3>
+                    <p>Innovative treatments for heart and blood conditions.</p>
+                </div>
             </div>
             <div class="feature">
-                <div class="feature-icon">🧠</div>
-                <h3>Neuroscience</h3>
-                <p>Advancing treatments for brain and nervous system disorders.</p>
+                <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=250&fit=crop" alt="Neuroscience" class="feature-img">
+                <div class="feature-content">
+                    <h3>Neuroscience</h3>
+                    <p>Advancing treatments for brain and nervous system disorders.</p>
+                </div>
             </div>
             <div class="feature">
-                <div class="feature-icon">🦠</div>
-                <h3>Infectious Disease</h3>
-                <p>Developing new therapies to fight resistant infections.</p>
+                <img src="https://images.unsplash.com/photo-1584036561566-baf8f5f1b144?w=400&h=250&fit=crop" alt="Infectious Disease" class="feature-img">
+                <div class="feature-content">
+                    <h3>Infectious Disease</h3>
+                    <p>Developing new therapies to fight resistant infections.</p>
+                </div>
             </div>
         </div>
     </section>
@@ -551,29 +583,47 @@
     <!-- About -->
     <section class="about">
         <div class="about-inner">
+            <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=600&h=500&fit=crop" alt="Researcher" class="about-img">
             <div class="about-text">
                 <h2>About VeraGen Therapeutics</h2>
                 <p>Founded in 2003, VeraGen Therapeutics is a global biopharmaceutical company dedicated to discovering, developing, and delivering innovative medicines that address serious health challenges.</p>
                 <p>Our team of over 5,000 scientists, researchers, and healthcare professionals work across 15 research facilities worldwide, united by a shared mission to improve patient outcomes.</p>
                 <p>We invest significantly in research and development, with over $800 million invested annually in discovering the next generation of treatments.</p>
+                <div class="about-cards">
+                    <div class="about-card">
+                        <h4>$800M+</h4>
+                        <p>Annual R&D Investment</p>
+                    </div>
+                    <div class="about-card">
+                        <h4>5,000+</h4>
+                        <p>Employees Worldwide</p>
+                    </div>
+                </div>
             </div>
-            <div class="about-cards">
-                <div class="about-card">
-                    <h4>$800M+</h4>
-                    <p>Annual R&D Investment</p>
-                </div>
-                <div class="about-card">
-                    <h4>5,000+</h4>
-                    <p>Employees Worldwide</p>
-                </div>
-                <div class="about-card">
-                    <h4>15</h4>
-                    <p>Research Facilities</p>
-                </div>
-                <div class="about-card">
-                    <h4>200+</h4>
-                    <p>Clinical Trials</p>
-                </div>
+        </div>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+        <div class="section-header">
+            <h2>Our Leadership</h2>
+            <p>Meet the team driving innovation in healthcare.</p>
+        </div>
+        <div class="team-grid">
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=350&fit=crop" alt="CEO" class="team-img">
+                <h3>Dr. James Mitchell</h3>
+                <p>Chief Executive Officer</p>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=350&fit=crop" alt="CSO" class="team-img">
+                <h3>Dr. Sarah Chen</h3>
+                <p>Chief Scientific Officer</p>
+            </div>
+            <div class="team-member">
+                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=350&fit=crop" alt="Researcher" class="team-img">
+                <h3>Dr. Michael Brooks</h3>
+                <p>Head of Research</p>
             </div>
         </div>
     </section>
@@ -599,6 +649,16 @@
             </div>
         </div>
     </div>
+
+    <!-- Lab Section -->
+    <section class="lab-section">
+        <img src="https://images.unsplash.com/photo-1532094349884-543bc11b234d?w=700&h=500&fit=crop" alt="Laboratory" class="lab-img">
+        <div class="lab-content">
+            <h2>State-of-the-Art Research Facilities</h2>
+            <p>Our advanced laboratories feature the latest technology and equipment, enabling our scientists to push the boundaries of what's possible in medicine.</p>
+            <a href="#" class="btn-primary" style="background: #fff; color: #0d4f4f;">Learn About Our Science</a>
+        </div>
+    </section>
 
     <!-- CTA -->
     <section class="cta">
