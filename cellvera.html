@@ -473,8 +473,11 @@
         }
         @media (max-width: 600px) {
             .menu-toggle { display: flex; }
-            .top-bar { padding: 10px 20px; flex-direction: column; gap: 8px; }
-            header { padding: 15px 20px; }
+            .top-bar { padding: 8px 15px; flex-direction: row; justify-content: center; gap: 15px; }
+            .top-bar-left { font-size: 0.7rem; gap: 12px; }
+            header { padding: 12px 15px; }
+            .logo { font-size: 1.2rem; }
+            .logo-icon { width: 32px; height: 32px; font-size: 1rem; }
             nav { 
                 display: none; 
                 position: absolute;
@@ -483,19 +486,53 @@
                 right: 0;
                 background: #fff;
                 flex-direction: column;
-                padding: 20px;
+                padding: 15px;
                 box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-                gap: 15px;
+                gap: 0;
             }
+            nav a { 
+                padding: 12px 0; 
+                border-bottom: 1px solid #eee;
+                text-align: center;
+            }
+            nav .btn-primary { margin-top: 10px; }
             nav.active { display: flex; }
-            .hero, .features, .about, .stats, .team, .cta, footer { padding-left: 20px; padding-right: 20px; }
-            .features-grid { grid-template-columns: 1fr; }
-            .about-cards { grid-template-columns: 1fr; }
-            .stats-grid { flex-direction: column; gap: 30px; }
-            .footer-grid { grid-template-columns: 1fr; }
-            .footer-bottom { flex-direction: column; text-align: center; }
-            .footer-bottom-links { margin-top: 10px; }
-            .footer-bottom-links a { margin: 0 10px; }
+            .hero { padding: 40px 15px; min-height: auto; }
+            .hero h1 { font-size: 1.6rem; }
+            .hero p { font-size: 0.95rem; }
+            .hero-btns { flex-direction: column; }
+            .hero-btns a { width: 100%; text-align: center; }
+            .hero-img { height: 220px; max-width: 100%; }
+            .quick-links { flex-direction: column; gap: 10px; padding: 20px; }
+            .quick-link { font-size: 0.9rem; justify-content: center; }
+            .features, .about, .stats, .team, .cta, footer { padding-left: 15px; padding-right: 15px; }
+            .section-header h2 { font-size: 1.6rem; }
+            .features-grid { grid-template-columns: 1fr; gap: 15px; }
+            .feature-img { height: 140px; }
+            .about-inner { gap: 30px; }
+            .about-img { height: 250px; }
+            .about-text h2 { font-size: 1.5rem; }
+            .about-text p { font-size: 0.9rem; }
+            .about-cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .about-card { padding: 15px; }
+            .about-card h4 { font-size: 1.3rem; }
+            .stats { padding: 40px 15px; }
+            .stat-item h3 { font-size: 2rem; }
+            .stat-item p { font-size: 0.8rem; }
+            .team-img { height: 200px; }
+            .cta { padding: 50px 15px; }
+            .cta h2 { font-size: 1.6rem; }
+            .cta p { font-size: 0.9rem; }
+            footer { padding: 40px 15px 20px; }
+            .footer-grid { gap: 25px; }
+            .footer-col h4 { margin-bottom: 12px; }
+            .footer-col li { margin-bottom: 8px; }
+            .footer-col a { font-size: 0.8rem; }
+            .footer-bottom { flex-direction: column; text-align: center; gap: 10px; }
+            .footer-bottom-links a { margin: 0 8px; font-size: 0.7rem; }
+            /* Touch improvements */
+            a, button, .feature { -webkit-tap-highlight-color: transparent; }
+            .feature:active { transform: scale(0.98); }
         }
     </style>
 </head>
