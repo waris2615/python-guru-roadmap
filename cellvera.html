@@ -3,26 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cellvera Pharma - Pushing the Boundaries of Science</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Cellvera Pharmaceuticals</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', 'Montserrat', system-ui, sans-serif;
-            color: #1a1a2e;
+            font-family: 'Roboto', system-ui, sans-serif;
+            color: #333;
             line-height: 1.6;
-            overflow-x: hidden;
+            background: #fff;
         }
         
-        /* Gradient Text */
-        .gradient-text {
-            background: linear-gradient(90deg, #0066cc, #9b59b6, #e74c3c);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        /* Top Bar */
+        .top-bar {
+            background: #f5f5f5;
+            padding: 8px 40px;
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+            font-size: 0.8rem;
+            border-bottom: 1px solid #e0e0e0;
         }
+        .top-bar a {
+            color: #666;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .top-bar a:hover { color: #c41e3a; }
         
-        /* Header */
+        /* Main Header */
         header {
             display: flex;
             justify-content: space-between;
@@ -32,632 +41,616 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         .logo {
-            font-size: 1.6rem;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 1.8rem;
             font-weight: 700;
-            font-style: italic;
-            color: #0066cc;
+            color: #1a1a1a;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
+            text-decoration: none;
         }
         .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #0066cc, #9b59b6);
-            border-radius: 8px;
+            width: 45px;
+            height: 45px;
+            background: #c41e3a;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: #fff;
             font-weight: bold;
-            font-style: normal;
-            font-size: 1.2rem;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.3rem;
         }
-        .header-icons {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-        .header-icons span {
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-        }
-        .hamburger span {
-            width: 25px;
-            height: 3px;
-            background: #9b59b6;
-            border-radius: 2px;
+        .tagline {
+            font-size: 0.7rem;
+            color: #c41e3a;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 500;
         }
         
-        /* Hero Section */
-        .hero {
-            min-height: 85vh;
-            background: linear-gradient(180deg, #f8f9fa 0%, #f0f4f8 50%, #e8f4f8 100%);
-            padding: 80px 25px;
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -20%;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(155,89,182,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .hero-content {
-            max-width: 500px;
-            position: relative;
-            z-index: 1;
-        }
-        .hero h1 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            line-height: 1.15;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-        }
-        .hero h1 .line {
-            display: block;
-        }
-        .video-thumb {
-            width: 100%;
-            max-width: 400px;
-            height: 220px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border-radius: 15px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-top: 30px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-        }
-        .play-btn {
-            width: 70px;
-            height: 70px;
-            background: rgba(255,255,255,0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(10px);
-        }
-        .play-btn::after {
-            content: '';
-            border-style: solid;
-            border-width: 15px 0 15px 25px;
-            border-color: transparent transparent transparent #fff;
-            margin-left: 5px;
-        }
-        .video-caption {
-            margin-top: 15px;
-            font-size: 0.9rem;
-            color: #666;
-        }
-        .carousel-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .carousel-btn {
-            width: 35px;
-            height: 35px;
-            border: 2px solid #9b59b6;
-            background: transparent;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            color: #9b59b6;
-            font-size: 0.8rem;
-        }
-        .dots {
-            display: flex;
-            gap: 8px;
-        }
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #ccc;
-        }
-        .dot.active {
-            background: #9b59b6;
-        }
-        .cta-pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
+        /* Navigation */
+        nav {
             background: #fff;
-            color: #1a1a2e;
-            padding: 12px 28px;
-            border-radius: 30px;
+            border-bottom: 3px solid #c41e3a;
+            padding: 0 40px;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+        nav a {
+            display: block;
+            padding: 18px 0;
+            color: #333;
             text-decoration: none;
-            font-weight: 600;
-            margin-top: 25px;
-            border: 2px solid #1a1a2e;
+            font-weight: 500;
+            font-size: 0.95rem;
+            border-bottom: 3px solid transparent;
             transition: all 0.3s;
         }
-        .cta-pill:hover {
-            background: #1a1a2e;
-            color: #fff;
+        nav a:hover {
+            color: #c41e3a;
+            border-bottom-color: #c41e3a;
         }
         
-        /* Press Releases - Black Section */
-        .press-section {
-            background: #1a1a2e;
-            padding: 60px 25px;
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, #f8f8f8 0%, #fff 50%, #fff 100%);
+            padding: 80px 40px;
+            display: flex;
+            align-items: center;
+            gap: 60px;
         }
-        .press-section h2 {
-            color: #fff;
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 30px;
+        .hero-content {
+            flex: 1;
         }
-        .press-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 20px;
+        .hero h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a1a1a;
+            line-height: 1.2;
             margin-bottom: 20px;
         }
-        .press-date {
-            color: #666;
-            font-size: 0.85rem;
-            margin-bottom: 8px;
+        .hero h1 span {
+            color: #c41e3a;
         }
-        .press-headline {
-            color: #1a1a2e;
-            font-size: 1rem;
-            font-weight: 600;
-            line-height: 1.5;
-        }
-        
-        /* Stay Current Section */
-        .stay-current {
-            background: #e8f4f8;
-            padding: 60px 25px;
-            text-align: center;
-        }
-        .stay-current h2 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 25px;
-            color: #1a1a2e;
-        }
-        .cta-blue {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #0066cc;
-            color: #fff;
-            padding: 14px 32px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            margin-bottom: 30px;
-        }
-        .social-icons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background: #1a1a2e;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-        
-        /* Medicines Section */
-        .medicines {
-            background: #fff;
-            padding: 70px 25px;
-        }
-        .medicines h2 {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
-        .medicines h2 .gradient {
-            display: block;
-            font-size: 2rem;
-            font-weight: 700;
-            background: linear-gradient(90deg, #e74c3c, #9b59b6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .medicines p {
+        .hero p {
+            font-size: 1.1rem;
             color: #555;
-            margin: 20px 0;
-            max-width: 600px;
-            line-height: 1.8;
+            margin-bottom: 30px;
+            max-width: 500px;
         }
-        .link-arrow {
-            color: #0066cc;
+        .hero-image {
+            flex: 1;
+            max-width: 500px;
+        }
+        .hero-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        .btn-red {
+            display: inline-block;
+            background: #c41e3a;
+            color: #fff;
+            padding: 14px 35px;
+            border-radius: 4px;
             text-decoration: none;
             font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 5px;
+            transition: background 0.3s;
+        }
+        .btn-red:hover {
+            background: #a01830;
         }
         
-        /* Doing Well Section */
-        .doing-well {
-            background: #f8f9fa;
-            padding: 70px 25px;
+        /* Stats */
+        .stats {
             display: flex;
-            flex-direction: column;
-            gap: 30px;
+            background: #f9f9f9;
+            border-bottom: 1px solid #e0e0e0;
         }
-        .doing-well-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, #2ecc71, #27ae60);
-            border-radius: 15px;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .stat {
+            flex: 1;
+            text-align: center;
+            padding: 40px 20px;
+            border-right: 1px solid #e0e0e0;
         }
-        .doing-well-image .play-btn {
-            background: rgba(255,255,255,0.4);
+        .stat:last-child { border-right: none; }
+        .stat-num {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #c41e3a;
         }
-        .doing-well-content h2 {
-            font-size: 1.4rem;
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .section-header h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.2rem;
+            color: #1a1a1a;
             margin-bottom: 15px;
         }
-        .doing-well-content h2 span {
-            display: block;
-            font-weight: 700;
-            color: #1a1a2e;
+        .section-header p {
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
         }
-        .doing-well-content p {
+        
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .card {
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+        .card:hover {
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transform: translateY(-5px);
+        }
+        .card-img {
+            height: 200px;
+            background: linear-gradient(135deg, #c41e3a, #8b1425);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+        .card-body {
+            padding: 25px;
+        }
+        .card-tag {
+            background: #f5f5f5;
+            color: #c41e3a;
+            padding: 4px 12px;
+            border-radius: 3px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 12px;
+        }
+        .card h3 {
+            font-size: 1.2rem;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* About Section */
+        .about-section {
+            background: #f9f9f9;
+            padding: 100px 40px;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .about-text h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.2rem;
+            color: #1a1a1a;
+            margin-bottom: 25px;
+        }
+        .about-text p {
             color: #555;
+            margin-bottom: 20px;
             line-height: 1.8;
-            margin-bottom: 20px;
+        }
+        .about-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+        .about-stat {
+            background: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #e0e0e0;
+        }
+        .about-stat-num {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: #c41e3a;
         }
         
-        /* Career Section */
-        .career-section {
-            background: #fff;
-            padding: 0;
+        /* Products */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
         }
-        .career-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #3498db, #2980b9);
+        .product {
+            text-align: center;
+            padding: 30px 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .product:hover {
+            border-color: #c41e3a;
+            background: #fffafa;
+        }
+        .product-icon {
+            width: 70px;
+            height: 70px;
+            background: #c41e3a;
+            border-radius: 50%;
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
+            font-size: 1.8rem;
         }
-        .career-box {
-            background: #1a1a2e;
-            padding: 40px 25px;
-            margin-top: -40px;
-            position: relative;
-            border-radius: 20px 20px 0 0;
+        .product h3 {
+            font-size: 1rem;
+            color: #1a1a1a;
+            margin-bottom: 8px;
         }
-        .career-box p {
-            color: #fff;
-            font-size: 1.1rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-        .career-box .link-arrow {
-            color: #fff;
-            font-size: 1.1rem;
+        .product p {
+            font-size: 0.85rem;
+            color: #777;
         }
         
-        /* Clinical Trials */
-        .trials-section {
-            background: #fff;
-            padding: 0;
-        }
-        .trials-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, #e74c3c, #c0392b);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-        }
-        .trials-box {
-            background: #1a1a2e;
-            padding: 40px 25px;
-            margin-top: -40px;
-            position: relative;
-            border-radius: 20px 20px 0 0;
-        }
-        .trials-box p {
+        /* CTA Section */
+        .cta-section {
+            background: #c41e3a;
+            padding: 80px 40px;
+            text-align: center;
             color: #fff;
-            font-size: 1.1rem;
-            line-height: 1.7;
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.2rem;
             margin-bottom: 20px;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.95;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        .cta-section .btn-white {
+            background: #fff;
+            color: #c41e3a;
+            padding: 16px 40px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .cta-section .btn-white:hover {
+            background: #f0f0f0;
         }
         
         /* Footer */
         footer {
-            background: #e8f4f8;
-            padding: 50px 25px 30px;
-        }
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            font-style: italic;
-            color: #0066cc;
-            margin-bottom: 8px;
-        }
-        .footer-tagline {
-            color: #e74c3c;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 30px;
-        }
-        .footer-links a {
-            color: #1a1a2e;
-            text-decoration: none;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .legal-links {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-bottom: 25px;
-        }
-        .legal-links a {
-            color: #666;
-            font-size: 0.8rem;
-            text-decoration: none;
-        }
-        .copyright {
+            background: #1a1a1a;
             color: #999;
-            font-size: 0.8rem;
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid #d0e0e8;
+            padding: 60px 40px 30px;
         }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+        }
+        .footer-brand .logo {
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .footer-brand p {
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+        .footer-col h4 {
+            color: #fff;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 12px; }
+        .footer-col a {
+            color: #999;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .footer-col a:hover { color: #fff; }
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #333;
+            font-size: 0.8rem;
+            display: flex;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .footer-bottom-links a {
+            color: #999;
+            margin-left: 25px;
+            text-decoration: none;
+        }
+        .footer-bottom-links a:hover { color: #fff; }
         
-        /* Mobile First - Desktop */
-        @media (min-width: 768px) {
-            .hero {
-                padding: 100px 60px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; text-align: center; }
+            .hero p { margin: 0 auto 30px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .product-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .top-bar, header, nav, .hero, .section, .about-section, .cta-section, footer {
+                padding-left: 20px;
+                padding-right: 20px;
             }
-            .hero-content {
-                max-width: 550px;
-            }
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            .press-section {
-                padding: 80px 60px;
-            }
-            .press-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 20px;
-            }
-            .press-card {
-                margin-bottom: 0;
-            }
-            .stay-current, .medicines, .doing-well {
-                padding: 100px 60px;
-            }
-            .medicines-inner {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 60px;
-                align-items: center;
-            }
-            .doing-well {
-                flex-direction: row;
-                align-items: center;
-            }
-            .doing-well-image {
-                flex: 1;
-                height: 350px;
-            }
-            .doing-well-content {
-                flex: 1;
-            }
-            .career-section, .trials-section {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-            }
-            .career-box, .trials-box {
-                margin-top: 0;
-                border-radius: 0;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-            }
-            footer {
-                padding: 70px 60px 40px;
-            }
+            nav ul { gap: 15px; overflow-x: auto; }
+            .stats { flex-wrap: wrap; }
+            .stat { flex: 1 1 45%; border-right: none; }
+            .product-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 15px; }
+            .footer-bottom-links { margin-top: 10px; }
         }
     </style>
 </head>
 <body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <a href="#">Investors & Media</a>
+        <a href="#">Careers</a>
+        <a href="#">Contact</a>
+        <a href="#">Search</a>
+    </div>
+
     <!-- Header -->
     <header>
-        <div class="logo">
+        <a href="#" class="logo">
             <div class="logo-icon">C</div>
             CELLVERA
-        </div>
-        <div class="header-icons">
-            <span>🌍</span>
-            <span>🔍</span>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+        </a>
+        <div>
+            <div class="tagline">Pharmaceuticals</div>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Research</a></li>
+            <li><a href="#">Clinical Trials</a></li>
+            <li><a href="#">Responsibility</a></li>
+            <li><a href="#">Careers</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-content">
-            <h1>
-                <span class="line gradient-text">FUELING THE</span>
-                <span class="line gradient-text">FUTURE OF</span>
-                <span class="line gradient-text">HEALTHCARE</span>
-            </h1>
-            <div class="video-thumb">
-                <div class="play-btn"></div>
+            <h1>Advancing Medicine,<br><span>Improving Lives</span></h1>
+            <p>For over 25 years, Cellvera Pharmaceuticals has been committed to developing innovative therapies that transform patient outcomes across the globe.</p>
+            <a href="#" class="btn-red">Learn About Our Mission</a>
+        </div>
+        <div class="hero-image">
+            <div style="width:100%;height:350px;background:linear-gradient(135deg,#c41e3a,#8b1425);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:5rem;">
+                🔬
             </div>
-            <div class="carousel-controls">
-                <button class="carousel-btn">‹</button>
-                <span style="color:#666">❚❚</span>
-                <button class="carousel-btn">›</button>
-                <div class="dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat">
+            <div class="stat-num">25+</div>
+            <div class="stat-label">Years of Innovation</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">50M+</div>
+            <div class="stat-label">Patients Served</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">120+</div>
+            <div class="stat-label">Products Worldwide</div>
+        </div>
+        <div class="stat">
+            <div class="stat-num">30+</div>
+            <div class="stat-label">Countries</div>
+        </div>
+    </div>
+
+    <!-- Products Section -->
+    <section class="section">
+        <div class="section-header">
+            <h2>Our Therapeutic Areas</h2>
+            <p>We focus on developing treatments across multiple therapeutic areas where patients need them most.</p>
+        </div>
+        <div class="product-grid">
+            <div class="product">
+                <div class="product-icon">🦷</div>
+                <h3>Oral Health</h3>
+                <p>Dental care solutions</p>
+            </div>
+            <div class="product">
+                <div class="product-icon">❤️</div>
+                <h3>Cardiovascular</h3>
+                <p>Heart health medications</p>
+            </div>
+            <div class="product">
+                <div class="product-icon">🧠</div>
+                <h3>Neuroscience</h3>
+                <p>Brain & nerve treatments</p>
+            </div>
+            <div class="product">
+                <div class="product-icon">💪</div>
+                <h3>Immunology</h3>
+                <p>Immune system therapies</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research & Innovation -->
+    <section class="section" style="background:#fafafa;">
+        <div class="section-header">
+            <h2>Research & Innovation</h2>
+            <p>Our commitment to scientific excellence drives everything we do.</p>
+        </div>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-img">🔬</div>
+                <div class="card-body">
+                    <span class="card-tag">Research</span>
+                    <h3>Breaking New Ground</h3>
+                    <p>Our state-of-the-art research facilities enable breakthrough discoveries in pharmaceutical science.</p>
                 </div>
             </div>
-            <p class="video-caption">A decade of innovation in pharmaceutical research.</p>
-            <a href="#" class="cta-pill">Learn more ›</a>
-        </div>
-    </section>
-
-    <!-- Press Releases -->
-    <section class="press-section">
-        <h2>Press releases for investors and media</h2>
-        <div class="press-grid">
-            <div class="press-card">
-                <div class="press-date">Mar 18</div>
-                <div class="press-headline">Cellvera Pharma Announces Breakthrough in Oral Healthcare Treatments with New Patent Approval</div>
+            <div class="card">
+                <div class="card-img">📊</div>
+                <div class="card-body">
+                    <span class="card-tag">Clinical Trials</span>
+                    <h3>Rigorous Testing</h3>
+                    <p>Every treatment undergoes extensive clinical trials to ensure safety and efficacy.</p>
+                </div>
             </div>
-            <div class="press-card">
-                <div class="press-date">Mar 12</div>
-                <div class="press-headline">Cellvera Pharma Expands Global Presence with New Distribution Partners in Asia Pacific Region</div>
-            </div>
-            <div class="press-card">
-                <div class="press-date">Mar 5</div>
-                <div class="press-headline">Cellvera Pharma to Present at Major Healthcare Investor Conference Next Month</div>
+            <div class="card">
+                <div class="card-img">🌍</div>
+                <div class="card-body">
+                    <span class="card-tag">Global Impact</span>
+                    <h3>Worldwide Reach</h3>
+                    <p>Our medicines reach patients in over 30 countries across 6 continents.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Stay Current -->
-    <section class="stay-current">
-        <h2>Stay current on Cellvera Pharma news and company updates</h2>
-        <a href="#" class="cta-blue">Visit our newsroom ›</a>
-        <div class="social-icons">
-            <div class="social-icon">in</div>
-            <div class="social-icon">📷</div>
-            <div class="social-icon">f</div>
-            <div class="social-icon">▶</div>
-            <div class="social-icon">X</div>
-        </div>
-    </section>
-
-    <!-- Life-Changing Medicines -->
-    <section class="medicines">
-        <div class="medicines-inner">
-            <div>
-                <h2>We aim to push the bounds of science to make</h2>
-                <h2><span class="gradient">LIFE-CHANGING MEDICINES</span></h2>
-                <p>We're driven by the pursuit of scientific breakthroughs, seeking innovative solutions for patients facing serious conditions. From oral therapeutics to advanced formulations, our journey turns cutting-edge research into transformative medicine.</p>
-                <a href="#" class="link-arrow">Learn about our research and development efforts ›</a>
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-grid">
+            <div class="about-text">
+                <h2>About Cellvera Pharmaceuticals</h2>
+                <p>Founded in 1998, Cellvera Pharmaceuticals has grown from a small research company into a global pharmaceutical leader. Our mission is simple: to develop medicines that meaningfully improve patients' lives.</p>
+                <p>We combine cutting-edge science with a deep understanding of patient needs to create treatments that make a real difference. Our portfolio spans therapeutic areas including oral health, cardiovascular disease, neuroscience, and immunology.</p>
+                <p>Headquartered in the United States, we operate research facilities and distribution centers worldwide, employing over 3,000 dedicated professionals.</p>
             </div>
-            <div class="video-thumb" style="margin:0;max-width:100%;">
-                <div class="play-btn"></div>
+            <div class="about-stats">
+                <div class="about-stat">
+                    <div class="about-stat-num">3,000+</div>
+                    <div class="stat-label">Employees</div>
+                </div>
+                <div class="about-stat">
+                    <div class="about-stat-num">$500M</div>
+                    <div class="stat-label">Annual R&D Investment</div>
+                </div>
+                <div class="about-stat">
+                    <div class="about-stat-num">15</div>
+                    <div class="stat-label">Research Facilities</div>
+                </div>
+                <div class="about-stat">
+                    <div class="about-stat-num">200+</div>
+                    <div class="stat-label">Patents</div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Doing Well By Doing Good -->
-    <section class="doing-well">
-        <div class="doing-well-image">
-            <div class="play-btn"></div>
-        </div>
-        <div class="doing-well-content">
-            <h2>We're guided by our philosophy of<br><span>DOING WELL BY DOING GOOD</span></h2>
-            <p>We're dedicated to responsible business practices, integrating the highest standards of integrity into every facet of our operations. Our responsibility strategy addresses the issues that matter most to our stakeholders.</p>
-            <a href="#" class="cta-blue">Learn about our approach ›</a>
-        </div>
-    </section>
-
-    <!-- Careers -->
-    <section class="career-section">
-        <div class="career-image">👨‍🔬👩‍⚕️</div>
-        <div class="career-box">
-            <p>Join the brightest, most passionate innovators in healthcare. Find your next opportunity by applying for positions at Cellvera Pharma today.</p>
-            <a href="#" class="link-arrow">Join our team ›</a>
-        </div>
-    </section>
-
-    <!-- Clinical Trials -->
-    <section class="trials-section">
-        <div class="trials-image">🏥</div>
-        <div class="trials-box">
-            <p>Our journey of discovery continues as we strive to transform the lives of patients. Discover more about our clinical trials or locate a relevant trial near you.</p>
-            <a href="#" class="link-arrow">Explore our clinical trials ›</a>
-        </div>
+    <!-- CTA -->
+    <section class="cta-section">
+        <h2>Join Our Mission</h2>
+        <p>Be part of a team that's transforming healthcare and making a real difference in patients' lives.</p>
+        <a href="#" class="btn-white">Explore Careers</a>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="footer-logo">CELLVERA</div>
-        <div class="footer-tagline">SCIENCE TO MEDICINE®</div>
-        
-        <div class="footer-links">
-            <a href="#">Contact Us ›</a>
-            <a href="#">Investors & Media ›</a>
-            <a href="#">Careers ›</a>
-            <a href="#">Clinical Trials ›</a>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="#" class="logo">
+                    <div class="logo-icon">C</div>
+                    CELLVERA
+                </a>
+                <p>Advancing medicine, improving lives. We're committed to developing innovative therapies that transform patient outcomes worldwide.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Leadership</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Press</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Products</h4>
+                <ul>
+                    <li><a href="#">Our Medicines</a></li>
+                    <li><a href="#">Pipeline</a></li>
+                    <li><a href="#">Clinical Trials</a></li>
+                    <li><a href="#">Product Safety</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><a href="#">Healthcare Professionals</a></li>
+                    <li><a href="#">Patients</a></li>
+                    <li><a href="#">Investors</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
         </div>
-        
-        <div class="legal-links">
-            <a href="#">Terms of Use</a>
-            <a href="#">Social Media Terms</a>
-            <a href="#">Accessibility Statement</a>
-            <a href="#">Privacy Notice</a>
-            <a href="#">Cookie Policy</a>
-            <a href="#">Site Map</a>
-            <a href="#">Consumer Health Data Privacy Policy</a>
-            <a href="#">Privacy Preferences Center</a>
-        </div>
-        
-        <div class="copyright">
-            Copyright © 2026 Cellvera Pharma. All rights reserved.
+        <div class="footer-bottom">
+            <span>© 2026 Cellvera Pharmaceuticals. All rights reserved.</span>
+            <div class="footer-bottom-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Use</a>
+                <a href="#">Cookie Policy</a>
+            </div>
         </div>
     </footer>
 </body>
